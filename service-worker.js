@@ -1,4 +1,4 @@
-const CACHE_NAME = "clickdev-admin-v1";
+const CACHE_NAME = "clickdev-admin-v2";
 
 const ARQUIVOS_CACHE = [
     "./admin.html",

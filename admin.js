@@ -31,6 +31,11 @@ async function obterClienteLogado() {
         return null;
     }
 
+    const usuarioLogado = document.getElementById("usuarioLogado");
+
+if (usuarioLogado && cliente) {
+   usuarioLogado.innerHTML = `Olá, <span>${cliente.nome}</span>`;
+}
     return cliente;
 }
 

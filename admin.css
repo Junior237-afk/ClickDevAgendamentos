@@ -97,6 +97,14 @@ body {
         0 0 35px rgba(0, 230, 118, 0.06);
 }
 
+.usuario-logado {
+    color: #ffffff;
+}
+
+.usuario-logado span {
+    color: #3b82f6;
+    font-weight: 700;
+}
 
 /* ==============================
    MARCA CLICKDEV
@@ -1000,5 +1008,49 @@ body {
         width: 100%;
 
         margin-right: 0;
+    }
+}
+/* Conta logada + botão sair */
+.acoes-topo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+}
+
+.usuario-logado {
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.usuario-logado span {
+    color: #3b82f6;
+    font-weight: 700;
+}
+
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+    .painel-topo {
+        flex-wrap: wrap;
+    }
+
+    .acoes-topo {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 12px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .usuario-logado {
+        font-size: 13px;
+    }
+
+    #btnSair {
+        margin: 0;
     }
 }
