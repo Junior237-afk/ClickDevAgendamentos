@@ -1,0 +1,1133 @@
+/* ==================================================
+   CLICKDEV
+   Preto + Verde + Branco
+================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --clickdev-preto: #080b09;
+    --clickdev-preto-suave: #121713;
+
+    --clickdev-verde: #20d45a;
+    --clickdev-verde-escuro: #12963d;
+    --clickdev-verde-claro: #73ed98;
+
+    --clickdev-verde-fundo: #eaf8ee;
+
+    --clickdev-fundo: #f6f8f6;
+    --clickdev-fundo-2: #edf3ee;
+
+    --clickdev-branco: #ffffff;
+
+    --clickdev-texto: #202521;
+    --clickdev-texto-suave: #657067;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: var(--clickdev-fundo);
+
+    color: var(--clickdev-texto);
+}
+
+
+/* ==================================================
+   MENU
+================================================== */
+
+header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+.menu {
+    min-height: 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background-color: var(--clickdev-preto);
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+    color: var(--clickdev-verde);
+
+    font-size: 27px;
+
+    font-weight: bold;
+}
+
+.menu ul {
+    list-style: none;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+
+    color: var(--clickdev-branco);
+
+    font-weight: bold;
+
+    font-size: 17px;
+
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: var(--clickdev-verde);
+}
+
+
+/* BOTÃO TESTAR DO MENU */
+
+.btn-agendar {
+    background-color: var(--clickdev-verde);
+
+    color: var(--clickdev-preto) !important;
+
+    padding: 10px 20px;
+
+    border-radius: 25px;
+
+    transition: 0.3s;
+}
+
+.btn-agendar:hover {
+    background-color: var(--clickdev-verde-claro);
+
+    color: var(--clickdev-preto) !important;
+}
+
+
+/* ==================================================
+   SEÇÃO INICIAL
+================================================== */
+
+.inicio {
+    min-height: calc(100vh - 90px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 80px;
+
+    padding: 60px 8%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #f2f8f3 55%,
+            #e4f4e8 100%
+        );
+}
+
+
+/* LOGO PRINCIPAL */
+
+.inicio-imagem {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.inicio-imagem img {
+    width: 420px;
+
+    height: 420px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 5px solid var(--clickdev-verde);
+
+    box-shadow:
+        0 10px 35px rgba(32, 212, 90, 0.20);
+
+    transition: 0.3s;
+}
+
+.inicio-imagem img:hover {
+    transform: scale(1.02);
+}
+
+
+/* TEXTO INICIAL */
+
+.inicio-conteudo {
+    max-width: 550px;
+}
+
+.inicio-destaque {
+    display: inline-block;
+
+    color: var(--clickdev-verde-escuro);
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.inicio-conteudo h1 {
+    color: var(--clickdev-preto);
+
+    font-size: 52px;
+
+    margin-bottom: 15px;
+}
+
+.inicio-conteudo h2 {
+    color: var(--clickdev-verde-escuro);
+
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+.inicio-conteudo p {
+    color: var(--clickdev-texto-suave);
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+}
+
+
+/* BOTÃO PRINCIPAL */
+
+.botao-principal {
+    display: inline-block;
+
+    background-color: var(--clickdev-preto);
+
+    color: var(--clickdev-branco);
+
+    text-decoration: none;
+
+    padding: 15px 30px;
+
+    border-radius: 30px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.20);
+}
+
+.botao-principal:hover {
+    background-color: var(--clickdev-verde-escuro);
+
+    transform: translateY(-3px);
+}
+
+
+/* ==================================================
+   SEÇÕES
+================================================== */
+
+.secao {
+    padding: 90px 8%;
+
+    background-color: var(--clickdev-fundo);
+}
+
+.titulo-secao {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.titulo-secao h2 {
+    color: var(--clickdev-preto);
+
+    font-size: 36px;
+
+    margin-bottom: 10px;
+}
+
+.titulo-secao p {
+    color: var(--clickdev-texto-suave);
+
+    font-size: 18px;
+}
+
+
+/* ==================================================
+   CATEGORIAS
+================================================== */
+
+.categoria-modelos,
+.categoria-servicos {
+    max-width: 1100px;
+
+    margin: 0 auto 70px;
+}
+
+.categoria-modelos:last-child,
+.categoria-servicos:last-child {
+    margin-bottom: 0;
+}
+
+.titulo-categoria {
+    color: var(--clickdev-preto);
+
+    font-size: 28px;
+
+    margin-bottom: 25px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 2px solid var(--clickdev-verde);
+}
+
+
+/* ==================================================
+   GALERIA / PROJETOS
+================================================== */
+
+.galeria {
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px 25px;
+}
+
+.foto {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: visible;
+}
+
+.foto h3 {
+    min-height: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 10px;
+
+    text-align: center;
+
+    color: var(--clickdev-verde-escuro);
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.foto img {
+    width: 100%;
+
+    height: 300px;
+
+    object-fit: cover;
+
+    display: block;
+
+    border-radius: 15px;
+
+    border: 1px solid #dbe8dd;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.12);
+
+    transition: 0.4s;
+}
+
+.foto:hover img {
+    transform: scale(1.03);
+
+    box-shadow:
+        0 10px 25px rgba(32, 212, 90, 0.18);
+}
+
+
+/* ==================================================
+   SERVIÇOS
+================================================== */
+
+.cards-servicos {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.card-servico {
+    background-color: var(--clickdev-verde-fundo);
+
+    border: 2px solid #b9e8c6;
+
+    border-radius: 15px;
+
+    padding: 30px 20px;
+
+    text-align: center;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-servico:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--clickdev-verde);
+
+    box-shadow:
+        0 10px 28px rgba(32, 212, 90, 0.18);
+}
+
+.card-servico h3 {
+    color: var(--clickdev-verde-escuro);
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+}
+
+.card-servico p {
+    color: var(--clickdev-texto-suave);
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+.card-servico strong {
+    display: block;
+
+    color: var(--clickdev-preto);
+
+    font-size: 22px;
+
+    margin-bottom: 25px;
+}
+
+.card-servico a {
+    display: inline-block;
+
+    background-color: var(--clickdev-preto);
+
+    color: var(--clickdev-branco);
+
+    text-decoration: none;
+
+    padding: 10px 25px;
+
+    border-radius: 25px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.card-servico a:hover {
+    background-color: var(--clickdev-verde-escuro);
+}
+
+
+/* ==================================================
+   SOBRE
+================================================== */
+
+.sobre {
+    padding: 90px 8%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 70px;
+
+    background-color: var(--clickdev-verde-fundo);
+}
+
+.sobre-imagem img {
+    width: 300px;
+
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 4px solid var(--clickdev-verde);
+
+    box-shadow:
+        0 7px 25px rgba(32, 212, 90, 0.18);
+}
+
+.sobre-conteudo {
+    max-width: 600px;
+}
+
+.sobre-conteudo h2 {
+    color: var(--clickdev-preto);
+
+    font-size: 35px;
+
+    margin-bottom: 25px;
+}
+
+.sobre-conteudo p {
+    color: var(--clickdev-texto-suave);
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 15px;
+}
+
+
+/* ==================================================
+   AMBIENTE DE TESTE / AGENDAMENTO
+================================================== */
+
+.agendamento {
+    background-color: var(--clickdev-fundo);
+}
+
+.formulario-agendamento {
+    max-width: 700px;
+
+    margin: auto;
+
+    padding: 40px;
+
+    background-color: var(--clickdev-branco);
+
+    border: 1px solid #b9e8c6;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 7px 25px rgba(0, 0, 0, 0.10);
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: bold;
+
+    color: var(--clickdev-preto-suave);
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #cbd8cd;
+
+    border-radius: 10px;
+
+    background-color: #ffffff;
+
+    color: var(--clickdev-texto);
+
+    font-size: 16px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: var(--clickdev-verde);
+
+    box-shadow:
+        0 0 0 3px rgba(32, 212, 90, 0.15);
+}
+
+
+/* BOTÃO CONFIRMAR */
+
+.botao-confirmar {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background-color: var(--clickdev-preto);
+
+    color: var(--clickdev-branco);
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.botao-confirmar:hover {
+    background-color: var(--clickdev-verde-escuro);
+
+    transform: translateY(-2px);
+}
+
+
+/* ==================================================
+   CONTATO
+================================================== */
+
+.contato {
+    padding: 80px 8%;
+
+    background-color: var(--clickdev-verde-fundo);
+
+    text-align: center;
+}
+
+.contatos {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+.contato-item {
+    min-width: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    text-decoration: none;
+
+    color: var(--clickdev-verde-escuro);
+
+    background-color: var(--clickdev-branco);
+
+    border: 1px solid #cbe8d2;
+
+    padding: 20px 40px;
+
+    border-radius: 15px;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+.contato-item strong {
+    font-size: 20px;
+}
+
+.contato-item span {
+    font-size: 14px;
+
+    color: var(--clickdev-texto-suave);
+}
+
+.contato-item:hover {
+    transform: translateY(-3px);
+
+    background-color: var(--clickdev-preto);
+
+    border-color: var(--clickdev-verde);
+
+    color: var(--clickdev-verde);
+}
+
+.contato-item:hover span {
+    color: #d7ded8;
+}
+
+
+/* ==================================================
+   RODAPÉ
+================================================== */
+
+footer {
+    background-color: var(--clickdev-preto);
+
+    color: var(--clickdev-branco);
+
+    text-align: center;
+
+    padding: 30px 20px;
+
+    border-top: 3px solid var(--clickdev-verde);
+}
+
+footer p {
+    margin: 6px 0;
+}
+
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media (max-width: 900px) {
+
+    .menu {
+        padding: 15px 20px;
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .menu ul {
+        gap: 10px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .menu a {
+        font-size: 14px;
+    }
+
+
+    /* INÍCIO */
+
+    .inicio {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 40px;
+
+        padding: 60px 30px;
+    }
+
+    .inicio-imagem img {
+        width: 320px;
+
+        height: 320px;
+    }
+
+    .inicio-conteudo {
+        max-width: 600px;
+    }
+
+    .inicio-conteudo h1 {
+        font-size: 40px;
+    }
+
+    .inicio-conteudo h2 {
+        font-size: 25px;
+    }
+
+
+    /* GALERIA */
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* SERVIÇOS */
+
+    .cards-servicos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* SOBRE */
+
+    .sobre {
+        flex-direction: column;
+
+        text-align: center;
+
+        gap: 40px;
+    }
+}
+
+
+/* ==================================================
+   CELULAR
+================================================== */
+
+@media (max-width: 600px) {
+
+    /* MENU */
+
+    .menu {
+        min-height: auto;
+
+        padding: 14px 10px;
+
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 22px;
+
+        text-align: center;
+    }
+
+    .menu ul {
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        flex-wrap: wrap;
+
+        gap: 7px 11px;
+    }
+
+    .menu li {
+        margin: 0;
+    }
+
+    .menu a {
+        font-size: 13px;
+    }
+
+    .btn-agendar {
+        padding: 7px 13px;
+    }
+
+
+    /* INÍCIO */
+
+    .inicio {
+        min-height: auto;
+
+        padding: 45px 20px;
+
+        gap: 30px;
+    }
+
+    .inicio-imagem img {
+        width: 250px;
+
+        height: 250px;
+    }
+
+    .inicio-conteudo h1 {
+        font-size: 34px;
+
+        margin-bottom: 12px;
+    }
+
+    .inicio-conteudo h2 {
+        font-size: 22px;
+
+        line-height: 1.4;
+    }
+
+    .inicio-conteudo p {
+        font-size: 17px;
+
+        line-height: 1.6;
+    }
+
+    .botao-principal {
+        font-size: 16px;
+
+        padding: 14px 25px;
+    }
+
+
+    /* SEÇÕES */
+
+    .secao {
+        padding: 60px 14px;
+    }
+
+    .titulo-secao {
+        margin-bottom: 35px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 28px;
+    }
+
+    .titulo-secao p {
+        font-size: 16px;
+    }
+
+    .titulo-categoria {
+        font-size: 24px;
+    }
+
+
+    /* GALERIA */
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 18px 8px;
+
+        padding: 0;
+    }
+
+    .foto {
+        width: 100%;
+
+        display: flex;
+
+        flex-direction: column;
+    }
+
+    .foto h3 {
+        min-height: 44px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        margin: 0 0 7px;
+
+        padding: 0 3px;
+
+        text-align: center;
+
+        font-size: 16px;
+
+        line-height: 18px;
+    }
+
+    .foto img {
+        width: 100%;
+
+        height: 160px;
+
+        object-fit: cover;
+
+        border-radius: 10px;
+    }
+
+    .foto:hover img {
+        transform: none;
+    }
+
+
+    /* SERVIÇOS */
+
+    .categoria-servicos {
+        width: 100%;
+
+        padding: 0 12px;
+
+        box-sizing: border-box;
+    }
+
+    .cards-servicos {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+
+        width: 100%;
+    }
+
+    .card-servico {
+        width: 100%;
+
+        box-sizing: border-box;
+
+        margin: 0;
+
+        padding: 25px 18px;
+    }
+
+    .card-servico h3 {
+        font-size: 23px;
+    }
+
+
+    /* SOBRE */
+
+    .sobre {
+        padding: 60px 20px;
+
+        gap: 30px;
+    }
+
+    .sobre-imagem img {
+        width: 220px;
+
+        height: 220px;
+    }
+
+    .sobre-conteudo h2 {
+        font-size: 30px;
+    }
+
+    .sobre-conteudo p {
+        font-size: 17px;
+    }
+
+
+    /* AGENDAMENTO */
+
+    .formulario-agendamento {
+        padding: 25px 20px;
+    }
+
+    .campo input,
+    .campo select {
+        padding: 13px;
+    }
+
+
+    /* CONTATO */
+
+    .contato {
+        padding: 60px 20px;
+    }
+
+    .contatos {
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+    .contato-item {
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 18px 20px;
+    }
+
+
+    /* RODAPÉ */
+
+    footer {
+        padding: 25px 15px;
+    }
+
+    footer p {
+        font-size: 14px;
+    }
+}
+
+
+/* ==================================================
+   CELULARES PEQUENOS
+================================================== */
+
+@media (max-width: 400px) {
+
+    .inicio-imagem img {
+        width: 210px;
+
+        height: 210px;
+    }
+
+    .inicio-conteudo h1 {
+        font-size: 30px;
+    }
+
+    .inicio-conteudo h2 {
+        font-size: 20px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .galeria {
+        gap: 16px 7px;
+    }
+
+    .foto h3 {
+        font-size: 15px;
+
+        line-height: 17px;
+    }
+
+    .foto img {
+        height: 150px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 25px;
+    }
+}

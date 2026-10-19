@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <link rel="manifest" href="manifest-admin.json">
+
+<link rel="icon" type="image/png" href="icon-192.png">
+
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<meta name="theme-color" content="#0d0d0d">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo | ClickDev</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         LOGIN
+    ========================== -->
+    <main class="login-container">
+
+        <div class="login-box">
+
+            <!-- IDENTIDADE CLICKDEV -->
+            <div class="login-marca">
+
+                <img
+                    src="img_clickdev.jpeg"
+                    alt="ClickDev"
+                    class="logo-clickdev"
+                >
+
+                <div>
+                    <span class="marca-clickdev">
+                        CLICKDEV
+                    </span>
+
+                    <h1>Área Administrativa</h1>
+
+                    <p>
+                        Acesse o painel de gerenciamento
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- FORMULÁRIO DE LOGIN -->
+            <form id="formLogin">
+
+                <label for="email">
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                >
+
+
+                <label for="senha">
+                    Senha
+                </label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+
+
+                <button type="submit">
+                    Entrar
+                </button>
+
+            </form>
+
+            <p id="mensagemLogin"></p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         PAINEL ADMINISTRATIVO
+    ========================== -->
+    <main
+        id="painelAdmin"
+        class="painel-admin"
+        style="display: none;"
+    >
+
+        <div class="painel-container">
+
+
+            <!-- =========================
+                 CABEÇALHO
+            ========================== -->
+            <header class="painel-topo">
+
+                <div class="perfil-admin">
+
+                    <img
+                        src="img_clickdev.jpeg"
+                        alt="ClickDev"
+                        class="foto-admin"
+                    >
+
+                    <div class="perfil-texto">
+
+                        <span class="painel-subtitulo">
+                            CLICKDEV
+                        </span>
+
+                        <h1>
+                            Painel de Agendamentos
+                        </h1>
+
+                        <p>
+                            Gerencie seus horários e acompanhe suas reservas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="btnSair"
+                >
+                    Sair
+                </button>
+
+            </header>
+
+
+            <!-- =========================
+                 CADASTRAR DISPONIBILIDADE
+            ========================== -->
+            <section class="card-admin card-disponibilidade">
+
+                <div class="card-titulo">
+
+                    <div>
+
+                        <h2>
+                            Cadastrar disponibilidade
+                        </h2>
+
+                        <p>
+                            Adicione uma nova data e horário para atendimento.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <form id="formHorario">
+
+                    <div class="campo-form">
+
+                        <label for="dataHorario">
+                            Data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dataHorario"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo-form">
+
+                        <label for="horaHorario">
+                            Horário
+                        </label>
+
+                        <input
+                            type="time"
+                            id="horaHorario"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button type="submit">
+                        + Adicionar horário
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- =========================
+                 HORÁRIOS + RESERVAS
+            ========================== -->
+            <div class="painel-grid">
+
+
+                <!-- HORÁRIOS -->
+                <section class="card-admin">
+
+                    <div class="card-titulo">
+
+                        <div>
+
+                            <h2>
+                                Horários
+                            </h2>
+
+                            <p>
+                                Disponibilidades cadastradas para o dia.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="filtro-data">
+
+                        <label for="filtroDataHorarios">
+                            Visualizar data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filtroDataHorarios"
+                        >
+
+                    </div>
+
+
+                    <div
+                        id="listaHorarios"
+                        class="lista-conteudo"
+                    >
+
+                        <p>
+                            Nenhum horário cadastrado.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RESERVAS -->
+                <section class="card-admin">
+
+                    <div class="card-titulo">
+
+                        <div>
+
+                            <h2>
+                                Reservas
+                            </h2>
+
+                            <p>
+                                Clientes agendados para o dia selecionado.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="filtro-data">
+
+                        <label for="filtroDataReservas">
+                            Visualizar data
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filtroDataReservas"
+                        >
+
+                    </div>
+
+
+                    <div
+                        id="listaReservas"
+                        class="lista-conteudo"
+                    >
+
+                        <p>
+                            Nenhuma reserva encontrada.
+                        </p>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- SUPABASE -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- JAVASCRIPT DO PAINEL -->
+    <script src="admin.js"></script>
+
+    <script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker
+                .register("./service-worker.js")
+                .then(() => {
+                    console.log("PWA ClickDev ativada.");
+                })
+                .catch((erro) => {
+                    console.error("Erro ao ativar PWA:", erro);
+                });
+        });
+    }
+</script>
+
+</body>
+
+</html>
