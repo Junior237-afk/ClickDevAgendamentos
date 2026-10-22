@@ -13,19 +13,22 @@ let clienteAtual = null;
 
 async function obterClienteDoSite() {
 
-    const { data: cliente, error } = await supabaseClient
-        .from("clientes")
-        .select("id, nome, slug, whatsapp")
-        .eq("slug", CLIENTE_SLUG)
-        .eq("ativo", true)
-        .single();
+    const { data, error } = await supabaseClient
+        .rpc("obter_cliente_publico", {
+            p_slug: CLIENTE_SLUG
+        });
 
     if (error) {
         console.error("Erro ao identificar cliente:", error);
         return null;
     }
 
-    clienteAtual = cliente;
+    if (!data || data.length === 0) {
+        console.error("Cliente não encontrado.");
+        return null;
+    }
+
+    clienteAtual = data[0];
 
     console.log("Cliente do site:", clienteAtual);
 
