@@ -9,48 +9,35 @@
 }
 
 :root {
-    /* CLICKDEV */
-    --verde-principal: #00e676;
+    --verde: #00e676;
     --verde-claro: #39ff88;
     --verde-escuro: #00b85c;
 
     --preto: #050806;
-    --grafite: #0d1411;
-    --grafite-claro: #151e1a;
-    --grafite-hover: #1a2721;
+    --fundo: #070b09;
+    --sidebar: #0a100d;
+    --card: #0d1511;
+    --card-claro: #111c17;
 
     --branco: #ffffff;
-
     --texto: #f2f6f4;
-    --texto-secundario: #9ba8a1;
+    --texto-secundario: #91a098;
 
-    --borda: rgba(0, 230, 118, 0.17);
+    --borda: rgba(0, 230, 118, 0.15);
 
+    --azul: #3b82f6;
     --vermelho: #e74c5e;
-    --vermelho-fundo: rgba(231, 76, 94, 0.12);
+    --whatsapp: #25d366;
 
-    --verde-whatsapp: #25d366;
+    --sidebar-largura: 245px;
+    --topo-altura: 78px;
 }
 
 body {
     font-family: Arial, sans-serif;
-
+    background: var(--fundo);
     color: var(--texto);
-
     min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(0, 230, 118, 0.07),
-            transparent 32%
-        ),
-        linear-gradient(
-            135deg,
-            #050806 0%,
-            #0a100d 50%,
-            #050806 100%
-        );
 }
 
 
@@ -97,19 +84,6 @@ body {
         0 0 35px rgba(0, 230, 118, 0.06);
 }
 
-.usuario-logado {
-    color: #ffffff;
-}
-
-.usuario-logado span {
-    color: #3b82f6;
-    font-weight: 700;
-}
-
-/* ==============================
-   MARCA CLICKDEV
-================================ */
-
 .login-marca {
     display: flex;
     flex-direction: column;
@@ -130,7 +104,7 @@ body {
 
     margin-bottom: 18px;
 
-    border: 2px solid var(--verde-principal);
+    border: 2px solid var(--verde);
 
     box-shadow:
         0 0 25px rgba(0, 230, 118, 0.23);
@@ -139,7 +113,7 @@ body {
 .marca-clickdev {
     display: block;
 
-    color: var(--verde-principal);
+    color: var(--verde);
 
     font-size: 13px;
     font-weight: 800;
@@ -151,21 +125,18 @@ body {
 
 .login-box h1 {
     color: var(--branco);
-
     font-size: 27px;
-
     margin-bottom: 7px;
 }
 
 .login-marca p {
     color: var(--texto-secundario);
-
     font-size: 14px;
 }
 
 
 /* ==============================
-   FORMULÁRIO LOGIN
+   LOGIN - FORMULÁRIO
 ================================ */
 
 #formLogin {
@@ -187,38 +158,25 @@ body {
     height: 49px;
 
     padding: 0 14px;
-
     margin-bottom: 20px;
 
     border: 1px solid #26342d;
     border-radius: 11px;
 
     background: #080d0b;
-
     color: var(--branco);
 
     font-size: 15px;
 
     outline: none;
-
-    transition: 0.2s;
-}
-
-#formLogin input::placeholder {
-    color: #68756e;
 }
 
 #formLogin input:focus {
-    border-color: var(--verde-principal);
+    border-color: var(--verde);
 
     box-shadow:
         0 0 0 3px rgba(0, 230, 118, 0.10);
 }
-
-
-/* ==============================
-   BOTÃO LOGIN
-================================ */
 
 #formLogin button {
     height: 49px;
@@ -229,7 +187,7 @@ body {
     background:
         linear-gradient(
             135deg,
-            var(--verde-principal),
+            var(--verde),
             var(--verde-escuro)
         );
 
@@ -239,18 +197,6 @@ body {
     font-weight: 800;
 
     cursor: pointer;
-
-    box-shadow:
-        0 8px 22px rgba(0, 230, 118, 0.18);
-
-    transition: 0.2s;
-}
-
-#formLogin button:hover {
-    transform: translateY(-1px);
-
-    box-shadow:
-        0 10px 28px rgba(0, 230, 118, 0.28);
 }
 
 #mensagemLogin {
@@ -265,194 +211,330 @@ body {
 
 
 /* ==============================
-   PAINEL ADMINISTRATIVO
+   PAINEL
 ================================ */
 
 .painel-admin {
     min-height: 100vh;
-
-    padding: 30px 28px 60px;
-
-    background:
-        radial-gradient(
-            circle at top right,
-            rgba(0, 230, 118, 0.07),
-            transparent 30%
-        ),
-        #070b09;
-}
-
-.painel-container {
-    width: 100%;
-    max-width: 1250px;
-
-    margin: 0 auto;
+    background: var(--fundo);
 }
 
 
 /* ==============================
-   CABEÇALHO
+   TOPO
 ================================ */
 
-.painel-topo {
-    position: relative;
+.sistema-topo {
+    height: var(--topo-altura);
 
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 
-    padding: 22px 25px;
+    padding: 0 28px;
 
-    margin-bottom: 25px;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
 
     background:
         linear-gradient(
-            120deg,
-            #101915,
-            #0c130f,
-            #111c17
+            90deg,
+            #0a110e,
+            #0d1712
         );
 
-    border: 1px solid var(--borda);
-
-    border-radius: 22px;
+    border-bottom: 1px solid var(--borda);
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.28);
-
-    overflow: hidden;
+        0 5px 20px rgba(0, 0, 0, 0.25);
 }
 
-
-/* DECORAÇÃO DO CABEÇALHO */
-
-.painel-topo::before {
-    content: "";
-
-    position: absolute;
-
-    width: 220px;
-    height: 220px;
-
-    right: -70px;
-    top: -120px;
-
-    border: 2px solid rgba(0, 230, 118, 0.10);
-
-    border-radius: 50%;
-}
-
-.painel-topo::after {
-    content: "";
-
-    position: absolute;
-
-    width: 150px;
-    height: 150px;
-
-    right: 80px;
-    bottom: -120px;
-
-    background: rgba(0, 230, 118, 0.025);
-
-    border-radius: 50%;
-}
-
-
-/* ==============================
-   PERFIL / LOGO DO PAINEL
-================================ */
-
-.perfil-admin {
-    position: relative;
-    z-index: 2;
-
+.topo-marca {
     display: flex;
     align-items: center;
-
-    gap: 18px;
+    gap: 13px;
 }
 
-.foto-admin {
-    width: 86px;
-    height: 86px;
+.topo-logo {
+    width: 48px;
+    height: 48px;
 
     object-fit: cover;
 
     border-radius: 50%;
 
-    border: 3px solid #101814;
-
-    outline: 2px solid var(--verde-principal);
-
-    box-shadow:
-        0 0 20px rgba(0, 230, 118, 0.18);
+    border: 1px solid var(--verde);
 }
 
-.perfil-texto {
-    display: flex;
-    flex-direction: column;
-}
+.topo-marca span {
+    color: var(--verde);
 
-.painel-subtitulo {
-    color: var(--verde-principal);
-
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 800;
 
-    text-transform: uppercase;
-
     letter-spacing: 2px;
-
-    margin-bottom: 5px;
 }
 
-.painel-topo h1 {
+.topo-marca h1 {
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.usuario-logado {
     color: var(--branco);
-
-    font-size: 30px;
-
-    margin-bottom: 5px;
+    font-size: 14px;
 }
 
-.painel-topo p {
-    color: var(--texto-secundario);
-
-    font-size: 14px;
+.usuario-logado span {
+    color: var(--azul);
+    font-weight: 700;
 }
 
 
 /* ==============================
-   BOTÃO SAIR
+   BOTÃO HAMBÚRGUER
 ================================ */
 
-#btnSair {
-    position: relative;
-    z-index: 2;
+.btn-menu {
+    display: none;
 
-    padding: 11px 22px;
+    width: 42px;
+    height: 42px;
 
-    border: 1px solid rgba(0, 230, 118, 0.24);
-    border-radius: 11px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
 
-    background: rgba(0, 230, 118, 0.07);
+    background: #0d1712;
 
-    color: var(--verde-principal);
+    color: var(--verde);
+
+    font-size: 23px;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
+   LAYOUT PRINCIPAL
+================================ */
+
+.sistema-layout {
+    display: flex;
+
+    min-height: 100vh;
+
+    padding-top: var(--topo-altura);
+}
+
+
+/* ==============================
+   MENU LATERAL
+================================ */
+
+.menu-lateral {
+    width: var(--sidebar-largura);
+
+    position: fixed;
+
+    top: var(--topo-altura);
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 22px 14px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b120f,
+            #080d0b
+        );
+
+    border-right: 1px solid var(--borda);
+
+    z-index: 900;
+}
+
+.menu-lateral nav {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.menu-item,
+.menu-sair {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #a9b5af;
+
+    text-align: left;
 
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
 
     cursor: pointer;
 
     transition: 0.2s;
 }
 
-#btnSair:hover {
-    background: var(--verde-principal);
+.menu-item span {
+    width: 23px;
 
-    color: #031008;
+    color: #718078;
 
-    transform: translateY(-1px);
+    font-size: 19px;
+
+    text-align: center;
+}
+
+.menu-item:hover {
+    background: rgba(0, 230, 118, 0.06);
+
+    color: var(--branco);
+}
+
+.menu-item.ativo {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 230, 118, 0.15),
+            rgba(0, 230, 118, 0.04)
+        );
+
+    color: var(--verde);
+
+    border: 1px solid rgba(0, 230, 118, 0.13);
+}
+
+.menu-item.ativo span {
+    color: var(--verde);
+}
+
+.menu-sair {
+    color: #ff7582;
+
+    border: 1px solid rgba(231, 76, 94, 0.10);
+
+    background: rgba(231, 76, 94, 0.04);
+}
+
+.menu-sair:hover {
+    background: rgba(231, 76, 94, 0.13);
+}
+
+
+/* ==============================
+   CONTEÚDO
+================================ */
+
+.sistema-conteudo {
+    width: calc(100% - var(--sidebar-largura));
+
+    margin-left: var(--sidebar-largura);
+
+    padding: 32px;
+
+    min-height: calc(100vh - var(--topo-altura));
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(0, 230, 118, 0.05),
+            transparent 28%
+        ),
+        var(--fundo);
+}
+
+
+/* ==============================
+   TELAS
+================================ */
+
+.tela-sistema {
+    display: none;
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+.tela-sistema.ativa {
+    display: block;
+}
+
+
+/* ==============================
+   TÍTULOS
+================================ */
+
+.titulo-pagina {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 26px;
+}
+
+.titulo-destaque {
+    display: block;
+
+    color: var(--verde);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 6px;
+}
+
+.titulo-pagina h2 {
+    color: var(--branco);
+
+    font-size: 27px;
+
+    margin-bottom: 6px;
+}
+
+.titulo-pagina p {
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+}
+
+.data-dashboard {
+    padding: 10px 14px;
+
+    border: 1px solid var(--borda);
+    border-radius: 9px;
+
+    background: var(--card);
+
+    color: #cbd5d0;
+
+    font-size: 13px;
 }
 
 
@@ -460,73 +542,257 @@ body {
    CARDS
 ================================ */
 
-.card-admin {
-    position: relative;
+.card-sistema {
+    padding: 25px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(17, 26, 22, 0.98),
-            rgba(11, 18, 15, 0.98)
+            rgba(15, 24, 20, 0.98),
+            rgba(10, 17, 14, 0.98)
         );
 
     border: 1px solid var(--borda);
 
-    border-radius: 20px;
-
-    padding: 25px;
+    border-radius: 18px;
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.25);
+        0 10px 30px rgba(0, 0, 0, 0.22);
 }
 
-.card-titulo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 22px;
+.card-cabecalho {
+    margin-bottom: 25px;
 }
 
-.card-titulo h2 {
+.card-cabecalho h3 {
     color: var(--branco);
 
-    font-size: 21px;
+    font-size: 18px;
 
     margin-bottom: 5px;
 }
 
-.card-titulo p {
+.card-cabecalho p {
     color: var(--texto-secundario);
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
 
 /* ==============================
-   CADASTRAR DISPONIBILIDADE
+   DASHBOARD
 ================================ */
 
-.card-disponibilidade {
-    margin-bottom: 25px;
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(480px, 1.4fr)
+        minmax(300px, 0.8fr);
+
+    gap: 22px;
+
+    align-items: stretch;
+}
+
+
+/* ==============================
+   GRÁFICO
+================================ */
+
+.grafico-area {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 55px;
+
+    min-height: 290px;
+}
+
+.grafico-rosca {
+    width: 220px;
+    height: 220px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(18, 29, 24, 0.98),
-            rgba(9, 16, 13, 0.98)
+        conic-gradient(
+            var(--azul) 0% 0%,
+            var(--verde) 0% 100%
         );
+
+    box-shadow:
+        0 0 30px rgba(0, 230, 118, 0.08);
 }
+
+.grafico-rosca::after {
+    content: "";
+
+    position: absolute;
+
+    width: 145px;
+    height: 145px;
+
+    border-radius: 50%;
+
+    background: #0c1410;
+
+    box-shadow:
+        inset 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+.grafico-centro {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grafico-centro strong {
+    color: var(--branco);
+
+    font-size: 40px;
+
+    line-height: 1;
+}
+
+.grafico-centro span {
+    color: var(--texto-secundario);
+
+    font-size: 12px;
+
+    margin-top: 7px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* ==============================
+   LEGENDA DO GRÁFICO
+================================ */
+
+.grafico-legenda {
+    min-width: 180px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.legenda-item {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding-bottom: 13px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.legenda-item:last-child {
+    border-bottom: none;
+}
+
+.bolinha {
+    width: 11px;
+    height: 11px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+}
+
+.bolinha.total {
+    background: #ffffff;
+}
+
+.bolinha.reservado {
+    background: var(--azul);
+}
+
+.bolinha.livre {
+    background: var(--verde);
+}
+
+.legenda-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.legenda-item small {
+    color: var(--texto-secundario);
+
+    font-size: 11px;
+}
+
+.legenda-item strong {
+    color: var(--branco);
+
+    font-size: 21px;
+
+    margin-top: 2px;
+}
+
+
+/* ==============================
+   PRÓXIMO ATENDIMENTO
+================================ */
+
+.proximo-atendimento {
+    min-height: 250px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.proximo-vazio {
+    width: 100%;
+
+    padding: 30px 15px;
+
+    text-align: center;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+
+    border: 1px dashed rgba(0, 230, 118, 0.16);
+
+    border-radius: 13px;
+}
+
+
+/* ==============================
+   FORMULÁRIO DE HORÁRIO
+================================ */
 
 #formHorario {
     display: grid;
 
     grid-template-columns:
         minmax(180px, 1fr)
-        minmax(150px, 1fr)
+        minmax(180px, 1fr)
         auto;
 
-    gap: 15px;
+    gap: 16px;
 
     align-items: end;
 }
@@ -546,20 +812,15 @@ body {
     margin-bottom: 7px;
 }
 
-
-/* ==============================
-   INPUTS
-================================ */
-
 .campo-form input,
 .filtro-data input {
     width: 100%;
-    height: 46px;
+    height: 47px;
 
     padding: 0 13px;
 
     border: 1px solid #26342d;
-    border-radius: 11px;
+    border-radius: 10px;
 
     background: #080d0b;
 
@@ -570,35 +831,29 @@ body {
     outline: none;
 
     color-scheme: dark;
-
-    transition: 0.2s;
 }
 
 .campo-form input:focus,
 .filtro-data input:focus {
-    border-color: var(--verde-principal);
+    border-color: var(--verde);
 
     box-shadow:
         0 0 0 3px rgba(0, 230, 118, 0.09);
 }
 
-
-/* ==============================
-   BOTÃO ADICIONAR HORÁRIO
-================================ */
-
+.btn-principal,
 #formHorario button {
-    height: 46px;
+    height: 47px;
 
     padding: 0 23px;
 
     border: none;
-    border-radius: 11px;
+    border-radius: 10px;
 
     background:
         linear-gradient(
             135deg,
-            var(--verde-principal),
+            var(--verde),
             var(--verde-escuro)
         );
 
@@ -609,35 +864,6 @@ body {
     cursor: pointer;
 
     white-space: nowrap;
-
-    box-shadow:
-        0 7px 18px rgba(0, 230, 118, 0.15);
-
-    transition: 0.2s;
-}
-
-#formHorario button:hover {
-    transform: translateY(-1px);
-
-    box-shadow:
-        0 9px 24px rgba(0, 230, 118, 0.24);
-}
-
-
-/* ==============================
-   HORÁRIOS + RESERVAS
-================================ */
-
-.painel-grid {
-    display: grid;
-
-    grid-template-columns:
-        minmax(340px, 0.8fr)
-        minmax(450px, 1.2fr);
-
-    gap: 25px;
-
-    align-items: start;
 }
 
 
@@ -649,9 +875,9 @@ body {
     display: flex;
     flex-direction: column;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 
-    padding-bottom: 20px;
+    padding-bottom: 22px;
 
     border-bottom: 1px solid var(--borda);
 }
@@ -666,7 +892,7 @@ body {
 ================================ */
 
 .lista-conteudo {
-    max-height: 550px;
+    max-height: 600px;
 
     overflow-y: auto;
 
@@ -677,22 +903,6 @@ body {
     color: var(--texto-secundario);
 
     font-size: 14px;
-}
-
-.lista-conteudo::-webkit-scrollbar {
-    width: 6px;
-}
-
-.lista-conteudo::-webkit-scrollbar-track {
-    background: #0b120f;
-
-    border-radius: 10px;
-}
-
-.lista-conteudo::-webkit-scrollbar-thumb {
-    background: #1d5138;
-
-    border-radius: 10px;
 }
 
 
@@ -707,9 +917,9 @@ body {
 
     gap: 15px;
 
-    min-height: 57px;
+    min-height: 58px;
 
-    padding: 11px 13px;
+    padding: 12px 14px;
 
     margin-bottom: 10px;
 
@@ -721,15 +931,7 @@ body {
         );
 
     border: 1px solid rgba(0, 230, 118, 0.12);
-    border-radius: 12px;
-
-    transition: 0.2s;
-}
-
-.horario-item:hover {
-    border-color: rgba(0, 230, 118, 0.35);
-
-    transform: translateY(-1px);
+    border-radius: 11px;
 }
 
 .horario-item span {
@@ -737,35 +939,6 @@ body {
 
     font-size: 14px;
     font-weight: 700;
-}
-
-
-/* ==============================
-   BOTÃO EXCLUIR
-================================ */
-
-.btn-excluir {
-    padding: 8px 13px;
-
-    border: 1px solid rgba(231, 76, 94, 0.15);
-    border-radius: 8px;
-
-    background: var(--vermelho-fundo);
-
-    color: #ff7180;
-
-    font-size: 13px;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.btn-excluir:hover {
-    background: var(--vermelho);
-
-    color: white;
 }
 
 
@@ -792,12 +965,9 @@ body {
 
     border: 1px solid rgba(0, 230, 118, 0.12);
 
-    border-left: 4px solid var(--verde-principal);
+    border-left: 4px solid var(--verde);
 
-    border-radius: 13px;
-
-    box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.18);
+    border-radius: 12px;
 }
 
 .reserva-item strong {
@@ -822,59 +992,53 @@ body {
 
 
 /* ==============================
-   BOTÕES DAS RESERVAS
+   BOTÕES
 ================================ */
 
+.btn-excluir,
 .btn-whatsapp-reserva,
 .btn-cancelar-reserva {
     padding: 9px 13px;
 
-    margin-top: 10px;
-    margin-right: 6px;
-
-    border: none;
     border-radius: 8px;
 
     font-size: 13px;
     font-weight: 700;
 
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
+.btn-excluir,
+.btn-cancelar-reserva {
+    border: 1px solid rgba(231, 76, 94, 0.18);
 
-/* WHATSAPP */
+    background: rgba(231, 76, 94, 0.11);
+
+    color: #ff7180;
+}
 
 .btn-whatsapp-reserva {
+    margin-top: 10px;
+    margin-right: 6px;
+
+    border: 1px solid rgba(37, 211, 102, 0.17);
+
     background: rgba(37, 211, 102, 0.12);
 
     color: #48e783;
-
-    border: 1px solid rgba(37, 211, 102, 0.17);
 }
-
-.btn-whatsapp-reserva:hover {
-    background: var(--verde-whatsapp);
-
-    color: white;
-}
-
-
-/* CANCELAR */
 
 .btn-cancelar-reserva {
-    background: var(--vermelho-fundo);
-
-    color: #ff7180;
-
-    border: 1px solid rgba(231, 76, 94, 0.15);
+    margin-top: 10px;
 }
 
-.btn-cancelar-reserva:hover {
-    background: var(--vermelho);
 
-    color: white;
+/* ==============================
+   OVERLAY
+================================ */
+
+.menu-overlay {
+    display: none;
 }
 
 
@@ -882,19 +1046,30 @@ body {
    TABLET
 ================================ */
 
-@media (max-width: 900px) {
+@media (min-width: 701px) and (max-width: 950px) {
 
-    .painel-grid {
-        grid-template-columns: 1fr;
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .dashboard-grid > * {
+        min-width: 0;
+        max-width: 100%;
     }
 
     #formHorario {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     #formHorario button {
         grid-column: 1 / -1;
     }
+
+    .sistema-conteudo {
+        min-width: 0;
+        max-width: 100%;
+    }
+
 }
 
 
@@ -902,9 +1077,11 @@ body {
    CELULAR
 ================================ */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    /* LOGIN */
+    :root {
+        --topo-altura: 68px;
+    }
 
     .login-container {
         padding: 15px;
@@ -912,8 +1089,6 @@ body {
 
     .login-box {
         padding: 30px 22px;
-
-        border-radius: 18px;
     }
 
     .logo-clickdev {
@@ -921,65 +1096,180 @@ body {
         height: 105px;
     }
 
-    .login-box h1 {
+
+    /* TOPO */
+
+    .sistema-topo {
+        padding: 0 13px;
+    }
+
+    .btn-menu {
+        display: block;
+    }
+
+    .topo-logo {
+        width: 40px;
+        height: 40px;
+    }
+
+    .topo-marca {
+        gap: 9px;
+    }
+
+    .topo-marca span {
+        font-size: 8px;
+    }
+
+    .topo-marca h1 {
+        font-size: 14px;
+    }
+
+    .usuario-logado {
+        display: none;
+    }
+
+
+    /* MENU */
+
+    .menu-lateral {
+        width: 265px;
+
+        transform: translateX(-100%);
+
+        transition: transform 0.25s ease;
+
+        z-index: 1200;
+    }
+
+    .menu-lateral.aberto {
+        transform: translateX(0);
+    }
+
+    .menu-overlay {
+        position: fixed;
+
+        top: var(--topo-altura);
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 1100;
+
+        background: rgba(0, 0, 0, 0.60);
+    }
+
+    .menu-overlay.ativo {
+        display: block;
+    }
+
+
+    /* CONTEÚDO */
+
+    .sistema-conteudo {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 22px 14px 35px;
+    }
+
+    .titulo-pagina {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .titulo-pagina h2 {
         font-size: 23px;
     }
 
-
-    /* PAINEL */
-
-    .painel-admin {
-        padding: 15px 12px 35px;
+    .titulo-pagina p {
+        font-size: 13px;
     }
 
-    .painel-topo {
-        padding: 18px 15px;
-
-        align-items: flex-start;
-
-        gap: 12px;
+    .data-dashboard {
+        display: none;
     }
 
-    .perfil-admin {
-        gap: 12px;
-    }
 
-    .foto-admin {
-        width: 62px;
-        height: 62px;
+    /* CARDS */
 
-        border-width: 2px;
-
-        outline-width: 2px;
-    }
-
-    .painel-subtitulo {
-        font-size: 10px;
-
-        letter-spacing: 1px;
-    }
-
-    .painel-topo h1 {
-        font-size: 21px;
-    }
-
-    .painel-topo p {
-        font-size: 12px;
-
-        line-height: 1.4;
-    }
-
-    #btnSair {
-        padding: 8px 11px;
-
-        font-size: 12px;
-    }
-
-    .card-admin {
+    .card-sistema {
         padding: 19px;
 
-        border-radius: 16px;
+        border-radius: 15px;
     }
+
+
+    /* GRÁFICO */
+
+    .grafico-area {
+        flex-direction: column;
+
+        gap: 30px;
+
+        min-height: auto;
+
+        padding: 10px 0;
+    }
+
+    .grafico-rosca {
+        width: 190px;
+        height: 190px;
+    }
+
+    .grafico-rosca::after {
+        width: 125px;
+        height: 125px;
+    }
+
+    .grafico-centro strong {
+        font-size: 34px;
+    }
+
+    .grafico-legenda {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    gap: 8px;
+}
+
+.legenda-item {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 10px 5px;
+
+    border-bottom: none;
+}
+
+.legenda-item div {
+    display: flex;
+    flex-direction: column;
+}
+
+.legenda-item small {
+    font-size: 10px;
+}
+
+.legenda-item strong {
+    font-size: 18px;
+}
+
+.bolinha {
+    width: 9px;
+    height: 9px;
+}
+
+
+    /* FORMULÁRIO */
 
     #formHorario {
         grid-template-columns: 1fr;
@@ -995,12 +1285,11 @@ body {
         max-width: none;
     }
 
-    .lista-conteudo {
-        max-height: 450px;
-    }
 
-    .reserva-item {
-        padding: 15px;
+    /* LISTAS */
+
+    .lista-conteudo {
+        max-height: 500px;
     }
 
     .btn-whatsapp-reserva,
@@ -1009,48 +1298,426 @@ body {
 
         margin-right: 0;
     }
+
 }
-/* Conta logada + botão sair */
-.acoes-topo {
+
+/* =========================================
+   NOVO CADASTRO DE HORÁRIOS
+========================================= */
+
+.cadastro-horarios-card {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+
+/* =========================================
+   BLOCOS
+========================================= */
+
+.bloco-cadastro {
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(0, 255, 140, 0.12);
+}
+
+.bloco-cadastro:last-of-type {
+    border-bottom: none;
+}
+
+.bloco-cadastro-titulo {
+    margin-bottom: 22px;
+}
+
+.bloco-cadastro-titulo > div {
     display: flex;
     align-items: center;
-    gap: 20px;
-    margin-left: auto;
+    gap: 14px;
 }
 
-.usuario-logado {
+.bloco-cadastro-titulo h3 {
+    margin: 0 0 4px;
+    font-size: 20px;
     color: #ffffff;
-    white-space: nowrap;
 }
 
-.usuario-logado span {
-    color: #3b82f6;
+.bloco-cadastro-titulo p {
+    margin: 0;
+    color: #9daaa4;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   NÚMERO DAS ETAPAS
+========================================= */
+
+.numero-etapa {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: rgba(0, 220, 120, 0.12);
+    border: 1px solid rgba(0, 220, 120, 0.25);
+
+    color: var(--verde);
+    font-size: 17px;
     font-weight: 700;
 }
 
 
-/* CELULAR */
+/* =========================================
+   CABEÇALHO DO CALENDÁRIO
+========================================= */
+
+.calendario-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 500px;
+
+    margin-bottom: 18px;
+
+    padding: 10px;
+
+    background: #07110d;
+
+    border: 1px solid rgba(0, 220, 120, 0.15);
+    border-radius: 12px;
+}
+
+.calendario-topo strong {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.btn-mes {
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(0, 220, 120, 0.18);
+    border-radius: 9px;
+
+    background: #0b1812;
+
+    color: var(--verde);
+
+    font-size: 25px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-mes:hover {
+    background: rgba(0, 220, 120, 0.12);
+}
+
+
+/* =========================================
+   DIAS DO MÊS
+========================================= */
+
+.lista-dias {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(70px, 1fr));
+
+    gap: 10px;
+}
+
+.dia-item {
+    min-height: 72px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    background: #08130e;
+
+    border: 1px solid rgba(0, 220, 120, 0.14);
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.dia-item small {
+    color: #829089;
+    font-size: 11px;
+}
+
+.dia-item strong {
+    font-size: 18px;
+}
+
+.dia-item:hover {
+    border-color: var(--verde);
+    background: rgba(0, 220, 120, 0.07);
+}
+
+.dia-item.ativo {
+    background: var(--verde);
+    border-color: var(--verde);
+    color: #051009;
+}
+
+.dia-item.ativo small {
+    color: #163c29;
+}
+
+
+/* =========================================
+   HORÁRIOS
+========================================= */
+
+.grade-horarios {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(95px, 1fr));
+
+    gap: 10px;
+}
+
+.horario-selecao {
+    padding: 13px 8px;
+
+    background: #08130e;
+
+    border: 1px solid rgba(0, 220, 120, 0.15);
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.horario-selecao:hover {
+    border-color: var(--verde);
+    background: rgba(0, 220, 120, 0.08);
+}
+
+.horario-selecao.ativo {
+    background: var(--verde);
+    border-color: var(--verde);
+
+    color: #041009;
+}
+
+
+/* =========================================
+   RESUMO DO CADASTRO
+========================================= */
+
+.resumo-cadastro {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    padding: 20px;
+
+    background: #07110d;
+
+    border: 1px solid rgba(0, 220, 120, 0.15);
+    border-radius: 12px;
+}
+
+.resumo-cadastro > div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.resumo-cadastro span {
+    color: #839189;
+    font-size: 12px;
+}
+
+.resumo-cadastro strong {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.resumo-cadastro .btn-principal {
+    margin-left: auto;
+    width: auto;
+    min-width: 190px;
+}
+
+.resumo-cadastro .btn-principal:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
 @media (max-width: 600px) {
 
-    .painel-topo {
-        flex-wrap: wrap;
+    .cadastro-horarios-card {
+        gap: 22px;
     }
 
-    .acoes-topo {
+    .bloco-cadastro {
+        padding-bottom: 22px;
+    }
+
+    .bloco-cadastro-titulo > div {
+        align-items: flex-start;
+    }
+
+    .bloco-cadastro-titulo h3 {
+        font-size: 17px;
+    }
+
+    .bloco-cadastro-titulo p {
+        font-size: 12px;
+    }
+
+    .numero-etapa {
+        width: 34px;
+        height: 34px;
+    }
+
+
+    /* calendário ocupa toda a largura */
+
+    .calendario-topo {
+        max-width: none;
         width: 100%;
-        margin-left: 0;
-        margin-top: 12px;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
     }
 
-    .usuario-logado {
+
+    /* 4 dias por linha */
+
+    .lista-dias {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7px;
+    }
+
+    .dia-item {
+        min-height: 62px;
+    }
+
+
+    /* 3 horários por linha */
+
+    .grade-horarios {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+    }
+
+    .horario-selecao {
+        padding: 11px 5px;
         font-size: 13px;
     }
 
-    #btnSair {
-        margin: 0;
+
+    /* resumo fica vertical */
+
+    .resumo-cadastro {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+    }
+
+    .resumo-cadastro .btn-principal {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   CORREÇÃO DE RESPONSIVIDADE
+   CELULAR E TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+    .sistema-conteudo,
+    #tela-dashboard,
+    .dashboard-grid,
+    .dashboard-grid > *,
+    .card-sistema {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+    }
+
+    .card-sistema {
+        width: 100%;
+    }
+
+    .grafico-area {
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .grafico-rosca {
+        flex-shrink: 0;
+        max-width: 100%;
+    }
+
+    .grafico-legenda {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .legenda-item {
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .grafico-legenda canvas,
+    .grafico-area canvas {
+        max-width: 100%;
+    }
+}
+
+/* =========================================
+   AJUSTES EXTRAS PARA CELULAR
+========================================= */
+
+@media (max-width: 600px) {
+
+    .grafico-legenda {
+        flex-wrap: wrap;
+    }
+
+    .legenda-item {
+        overflow-wrap: anywhere;
+    }
+
+    .sistema-conteudo {
+        overflow-x: hidden;
     }
 }

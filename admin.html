@@ -95,198 +95,504 @@
     <!-- =========================
          PAINEL ADMINISTRATIVO
     ========================== -->
-    <main
-        id="painelAdmin"
-        class="painel-admin"
-        style="display: none;"
-    >
+<main id="painelAdmin" class="painel-admin" style="display: none;">
 
-        <div class="painel-container">
+    <!-- =========================
+         TOPO
+    ========================== -->
+    <header class="sistema-topo">
+
+        <div class="topo-marca">
+            <button type="button" id="btnMenu" class="btn-menu">
+                ☰
+            </button>
+
+            <img
+                src="img_clickdev.jpeg"
+                alt="ClickDev"
+                class="topo-logo"
+            >
+
+            <div>
+                <span>CLICKDEV</span>
+                <h1>Painel de Agendamentos</h1>
+            </div>
+        </div>
+
+        <div id="usuarioLogado" class="usuario-logado">
+            Olá, ...
+        </div>
+
+    </header>
 
 
-            <!-- =========================
-                 CABEÇALHO
-            ========================== -->
-            <header class="painel-topo">
+    <div class="sistema-layout">
 
-                <div class="perfil-admin">
+        <!-- =========================
+             MENU LATERAL
+        ========================== -->
+        <aside id="menuLateral" class="menu-lateral">
 
-                    <img
-                        src="img_clickdev.jpeg"
-                        alt="ClickDev"
-                        class="foto-admin"
-                    >
-
-                    <div class="perfil-texto">
-
-                        <span class="painel-subtitulo">
-                            CLICKDEV
-                        </span>
-
-                        <h1>
-                            Painel de Agendamentos
-                        </h1>
-
-                        <p>
-                            Gerencie seus horários e acompanhe suas reservas.
-                        </p>
-
-                    </div>
-
-                </div>
-<div class="acoes-topo">
-
-    <div id="usuarioLogado" class="usuario-logado">
-        Olá, ...
-    </div>
+        <nav>
 
     <button
         type="button"
-        id="btnSair"
+        class="menu-item ativo"
+        data-tela="tela-dashboard"
     >
-        Sair
+        <span>⌂</span>
+        Dashboard
     </button>
 
-</div>
-            </header>
+    <button
+        type="button"
+        class="menu-item"
+        data-tela="tela-cadastrar"
+    >
+        <span>＋</span>
+        Cadastrar horários
+    </button>
+
+    <button
+        type="button"
+        class="menu-item"
+        data-tela="tela-agenda"
+    >
+        <span>▣</span>
+        Minha agenda
+    </button>
+
+    <button
+        type="button"
+        class="menu-item"
+        data-tela="tela-hoje"
+    >
+        <span>◷</span>
+        Horários de hoje
+    </button>
+
+</nav>
+
+            <button
+                type="button"
+                id="btnSair"
+                class="menu-sair"
+            >
+                Sair
+            </button>
+
+        </aside>
+
+
+        <!-- FUNDO ESCURO DO MENU NO CELULAR -->
+        <div id="menuOverlay" class="menu-overlay"></div>
+
+
+        <!-- =========================
+             CONTEÚDO
+        ========================== -->
+        <div class="sistema-conteudo">
 
 
             <!-- =========================
-                 CADASTRAR DISPONIBILIDADE
+                 DASHBOARD
             ========================== -->
-            <section class="card-admin card-disponibilidade">
+            <section
+                id="tela-dashboard"
+                class="tela-sistema ativa"
+            >
 
-                <div class="card-titulo">
-
+                <div class="titulo-pagina">
                     <div>
+                        <span class="titulo-destaque">
+                            VISÃO GERAL
+                        </span>
 
-                        <h2>
-                            Cadastrar disponibilidade
-                        </h2>
+                        <h2>Dashboard</h2>
 
                         <p>
-                            Adicione uma nova data e horário para atendimento.
+                            Acompanhe seus horários de hoje.
                         </p>
+                    </div>
 
+                    <div
+                        id="dataDashboard"
+                        class="data-dashboard"
+                    >
+                        Hoje
+                    </div>
+                </div>
+
+
+                <div class="dashboard-grid">
+
+                    <!-- GRÁFICO -->
+                    <section class="card-sistema card-grafico">
+
+                        <div class="card-cabecalho">
+                            <div>
+                                <h3>Horários de hoje</h3>
+                                <p>Resumo das disponibilidades.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="grafico-area">
+
+                            <div
+                                id="graficoHorarios"
+                                class="grafico-rosca"
+                            >
+
+                                <div class="grafico-centro">
+                                    <strong id="dashboardTotal">
+                                        0
+                                    </strong>
+
+                                    <span>
+                                        horários
+                                    </span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="grafico-legenda">
+
+                                <div class="legenda-item">
+                                    <span class="bolinha total"></span>
+
+                                    <div>
+                                        <small>Total</small>
+                                        <strong id="dashboardTotalLegenda">
+                                            0
+                                        </strong>
+                                    </div>
+                                </div>
+
+
+                                <div class="legenda-item">
+                                    <span class="bolinha reservado"></span>
+
+                                    <div>
+                                        <small>Reservados</small>
+                                        <strong id="dashboardReservados">
+                                            0
+                                        </strong>
+                                    </div>
+                                </div>
+
+
+                                <div class="legenda-item">
+                                    <span class="bolinha livre"></span>
+
+                                    <div>
+                                        <small>Livres</small>
+                                        <strong id="dashboardLivres">
+                                            0
+                                        </strong>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- PRÓXIMO ATENDIMENTO -->
+                    <section class="card-sistema">
+
+                        <div class="card-cabecalho">
+                            <div>
+                                <h3>Próximo atendimento</h3>
+                                <p>Seu próximo cliente agendado.</p>
+                            </div>
+                        </div>
+
+                        <div id="proximoAtendimento" class="proximo-atendimento">
+
+                            <div class="proximo-vazio">
+                                Nenhum atendimento próximo.
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+<!-- =========================
+     CADASTRAR HORÁRIOS
+========================== -->
+
+<section
+    id="tela-cadastrar"
+    class="tela-sistema"
+>
+
+    <div class="titulo-pagina">
+
+        <div>
+            <span class="titulo-destaque">
+                DISPONIBILIDADE
+            </span>
+
+            <h2>Cadastrar horários</h2>
+
+            <p>
+                Selecione a data e os horários que deseja disponibilizar.
+            </p>
+        </div>
+
+    </div>
+
+
+    <section class="card-sistema cadastro-horarios-card">
+
+        <!-- =========================
+             ESCOLHER DATA
+        ========================== -->
+
+        <div class="bloco-cadastro">
+
+        <div class="bloco-cadastro-titulo">
+            <div>
+                <span class="numero-etapa">1</span>
+
+                <div>
+                    <h3>Escolha a data</h3>
+                    <p>Selecione o dia em que deseja disponibilizar horários.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- NAVEGAÇÃO DO MÊS -->
+        <div class="calendario-topo">
+
+            <button
+                type="button"
+                id="mesAnterior"
+                class="btn-mes"
+            >
+                ‹
+            </button>
+
+            <strong id="tituloMes">
+                Outubro 2026
+            </strong>
+
+            <button
+                type="button"
+                id="proximoMes"
+                class="btn-mes"
+            >
+                ›
+            </button>
+
+        </div>
+
+
+        <!--
+            Os dias serão criados pelo JavaScript.
+            Estes botões são apenas para visualizar
+            como ficará a estrutura.
+        -->
+        <div
+            id="listaDias"
+            class="lista-dias"
+        >
+
+            <button type="button" class="dia-item">
+                <small>SÁB</small>
+                <strong>24</strong>
+            </button>
+
+            <button type="button" class="dia-item">
+                <small>DOM</small>
+                <strong>25</strong>
+            </button>
+
+            <button type="button" class="dia-item">
+                <small>SEG</small>
+                <strong>26</strong>
+            </button>
+
+            <button type="button" class="dia-item ativo">
+                <small>TER</small>
+                <strong>27</strong>
+            </button>
+
+            <button type="button" class="dia-item">
+                <small>QUA</small>
+                <strong>28</strong>
+            </button>
+
+            <button type="button" class="dia-item">
+                <small>QUI</small>
+                <strong>29</strong>
+            </button>
+
+            <button type="button" class="dia-item">
+                <small>SEX</small>
+                <strong>30</strong>
+            </button>
+
+            <button type="button" class="dia-item">
+                <small>SÁB</small>
+                <strong>31</strong>
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ESCOLHER HORÁRIOS
+    ========================== -->
+
+    <div class="bloco-cadastro">
+
+        <div class="bloco-cadastro-titulo">
+
+            <div>
+                <span class="numero-etapa">2</span>
+
+                <div>
+                    <h3>Escolha os horários</h3>
+                    <p>
+                        Selecione um ou vários horários para a data escolhida.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div
+            id="listaHorariosCadastro"
+            class="grade-horarios"
+        >
+
+            <button type="button" class="horario-selecao">08:00</button>
+            <button type="button" class="horario-selecao">08:30</button>
+
+            <button type="button" class="horario-selecao">09:00</button>
+            <button type="button" class="horario-selecao">09:30</button>
+
+            <button type="button" class="horario-selecao">10:00</button>
+            <button type="button" class="horario-selecao">10:30</button>
+
+            <button type="button" class="horario-selecao">11:00</button>
+            <button type="button" class="horario-selecao">11:30</button>
+
+            <button type="button" class="horario-selecao">12:00</button>
+            <button type="button" class="horario-selecao">12:30</button>
+
+            <button type="button" class="horario-selecao">13:00</button>
+            <button type="button" class="horario-selecao">13:30</button>
+
+            <button type="button" class="horario-selecao">14:00</button>
+            <button type="button" class="horario-selecao">14:30</button>
+
+            <button type="button" class="horario-selecao">15:00</button>
+            <button type="button" class="horario-selecao">15:30</button>
+
+            <button type="button" class="horario-selecao">16:00</button>
+            <button type="button" class="horario-selecao">16:30</button>
+
+            <button type="button" class="horario-selecao">17:00</button>
+            <button type="button" class="horario-selecao">17:30</button>
+
+            <button type="button" class="horario-selecao">18:00</button>
+            <button type="button" class="horario-selecao">18:30</button>
+
+            <button type="button" class="horario-selecao">19:00</button>
+            <button type="button" class="horario-selecao">19:30</button>
+
+            <button type="button" class="horario-selecao">20:00</button>
+            <button type="button" class="horario-selecao">20:30</button>
+
+            <button type="button" class="horario-selecao">21:00</button>
+            <button type="button" class="horario-selecao">21:30</button>
+
+            <button type="button" class="horario-selecao">22:00</button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         RESUMO
+    ========================== -->
+
+    <div class="resumo-cadastro">
+
+        <div>
+            <span>Data selecionada</span>
+
+            <strong id="dataSelecionadaTexto">
+                27/10/2026
+            </strong>
+        </div>
+
+
+        <div>
+            <span>Horários selecionados</span>
+
+            <strong id="quantidadeHorariosSelecionados">
+                0
+            </strong>
+        </div>
+
+
+        <button
+            type="button"
+            id="btnCadastrarHorarios"
+            class="btn-principal"
+            disabled
+        >
+            Cadastrar horários
+        </button>
+
+    </div>
+
+    </section>
+
+</section>
+
+            <!-- =========================
+                 MINHA AGENDA
+            ========================== -->
+            <section
+                id="tela-agenda"
+                class="tela-sistema"
+            >
+
+                <div class="titulo-pagina">
+
+                    <div>
+                        <span class="titulo-destaque">
+                            AGENDAMENTOS
+                        </span>
+
+                        <h2>Minha agenda</h2>
+
+                        <p>
+                            Consulte os clientes agendados por data.
+                        </p>
                     </div>
 
                 </div>
 
 
-                <form id="formHorario">
-
-                    <div class="campo-form">
-
-                        <label for="dataHorario">
-                            Data
-                        </label>
-
-                        <input
-                            type="date"
-                            id="dataHorario"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="campo-form">
-
-                        <label for="horaHorario">
-                            Horário
-                        </label>
-
-                        <input
-                            type="time"
-                            id="horaHorario"
-                            required
-                        >
-
-                    </div>
-
-
-                    <button type="submit">
-                        + Adicionar horário
-                    </button>
-
-                </form>
-
-            </section>
-
-
-            <!-- =========================
-                 HORÁRIOS + RESERVAS
-            ========================== -->
-            <div class="painel-grid">
-
-
-                <!-- HORÁRIOS -->
-                <section class="card-admin">
-
-                    <div class="card-titulo">
-
-                        <div>
-
-                            <h2>
-                                Horários
-                            </h2>
-
-                            <p>
-                                Disponibilidades cadastradas para o dia.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="filtro-data">
-
-                        <label for="filtroDataHorarios">
-                            Visualizar data
-                        </label>
-
-                        <input
-                            type="date"
-                            id="filtroDataHorarios"
-                        >
-
-                    </div>
-
-
-                    <div
-                        id="listaHorarios"
-                        class="lista-conteudo"
-                    >
-
-                        <p>
-                            Nenhum horário cadastrado.
-                        </p>
-
-                    </div>
-
-                </section>
-
-
-                <!-- RESERVAS -->
-                <section class="card-admin">
-
-                    <div class="card-titulo">
-
-                        <div>
-
-                            <h2>
-                                Reservas
-                            </h2>
-
-                            <p>
-                                Clientes agendados para o dia selecionado.
-                            </p>
-
-                        </div>
-
-                    </div>
-
+                <section class="card-sistema">
 
                     <div class="filtro-data">
 
@@ -306,20 +612,82 @@
                         id="listaReservas"
                         class="lista-conteudo"
                     >
-
                         <p>
                             Nenhuma reserva encontrada.
                         </p>
-
                     </div>
 
                 </section>
 
-            </div>
+            </section>
+
+
+            <!-- =========================
+                 HORÁRIOS DE HOJE
+            ========================== -->
+            <section
+                id="tela-hoje"
+                class="tela-sistema"
+            >
+
+                <div class="titulo-pagina">
+
+                    <div>
+                        <span class="titulo-destaque">
+                            DISPONIBILIDADE
+                        </span>
+
+                        <h2>Horários de hoje</h2>
+
+                        <p>
+                            Veja os horários cadastrados para hoje.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <section class="card-sistema">
+
+                    <!--
+                        Mantemos esse input porque seu JS atual
+                        utiliza o filtroDataHorarios.
+                        Depois vamos configurá-lo automaticamente
+                        para a data de hoje.
+                    -->
+                    <div class="filtro-data filtro-hoje">
+
+                        <label for="filtroDataHorarios">
+                            Data de hoje
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filtroDataHorarios"
+                        >
+
+                    </div>
+
+
+                    <div
+                        id="listaHorarios"
+                        class="lista-conteudo"
+                    >
+                        <p>
+                            Nenhum horário cadastrado.
+                        </p>
+                    </div>
+
+                </section>
+
+            </section>
+
 
         </div>
 
-    </main>
+    </div>
+
+</main>
 
 
     <!-- SUPABASE -->
