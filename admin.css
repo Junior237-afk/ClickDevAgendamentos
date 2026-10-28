@@ -724,12 +724,18 @@ body {
 }
 
 .bolinha.reservado {
-    background: var(--azul);
+    background: #F59E0B;
 }
 
 .bolinha.livre {
-    background: var(--verde);
+    background: #3982F6;
 }
+
+
+.bolinha.concluido {
+    background-color: #00D982;
+}
+
 
 .legenda-item div {
     display: flex;
@@ -1017,19 +1023,45 @@ body {
     color: #ff7180;
 }
 
+
 .btn-whatsapp-reserva {
     margin-top: 10px;
     margin-right: 6px;
 
-    border: 1px solid rgba(37, 211, 102, 0.17);
+    border: 1px solid rgba(13, 110, 253, 0.35);
 
-    background: rgba(37, 211, 102, 0.12);
+    background: rgba(13, 110, 253, 0.18);
 
-    color: #48e783;
+    color: #60a5fa;
 }
+
 
 .btn-cancelar-reserva {
     margin-top: 10px;
+}
+
+
+.btn-concluir-reserva {
+    background: rgba(0, 217, 130, 0.12);
+    color: #00D982;
+    border: 1px solid rgba(0, 217, 130, 0.3);
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-concluir-reserva:hover {
+    background: #00D982;
+    color: #06110C;
+    border-color: #00D982;
+    transform: translateY(-1px);
+}
+
+.btn-concluir-reserva:active {
+    transform: translateY(0);
 }
 
 
@@ -1721,3 +1753,14 @@ body {
         overflow-x: hidden;
     }
 }
+
+
+/* Ajuste dos botões da agenda em telas pequenas */
+@media (max-width: 600px) {
+    .btn-concluir-reserva {
+        box-sizing: border-box;
+        width: 100%;
+        display: block;
+    }
+}
+

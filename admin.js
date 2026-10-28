@@ -348,6 +348,18 @@ const { data, error } = await consulta
     Chamar no WhatsApp
 </button>
 
+
+${reserva.status === "reservado" ? `
+    <button
+        type="button"
+        class="btn-concluir-reserva"
+        onclick="concluirReserva(${reserva.id})"
+    >
+        Concluído
+    </button>
+` : ""}
+
+
 <button
     type="button"
     class="btn-cancelar-reserva"
@@ -382,6 +394,48 @@ function abrirWhatsApp(numero) {
 
     window.open(linkWhatsApp, "_blank");
 }
+
+
+async function concluirReserva(id) {
+    const confirmar = confirm(
+        "Deseja marcar este atendimento como concluído?"
+    );
+
+    if (!confirmar) return;
+
+    const cliente = await obterClienteLogado();
+
+    if (!cliente) {
+        alert("Não foi possível identificar o cliente.");
+        return;
+    }
+
+    const { data, error } = await supabaseClient
+        .from("reservas")
+        .update({ status: "concluido" })
+        .eq("id", id)
+        .eq("cliente_id", cliente.id)
+        .eq("status", "reservado")
+        .select("id");
+
+    if (error) {
+        console.error("Erro ao concluir atendimento:", error);
+        alert("Não foi possível concluir o atendimento.");
+        return;
+    }
+
+    if (!data || data.length === 0) {
+        alert("A reserva não foi atualizada. Verifique o status e as permissões do Supabase.");
+        return;
+    }
+
+    await carregarReservas();
+    await carregarDashboard();
+
+    alert("Atendimento concluído com sucesso!");
+}
+
+
 
 async function cancelarReserva(id) {
 
@@ -523,6 +577,8 @@ btnSair.addEventListener("click", async () => {
 async function carregarDashboard() {
 
     const cliente = await obterClienteLogado();
+    const concluidosElemento =
+    document.getElementById("dashboardConcluidos");
 
     if (!cliente) {
         console.error("Cliente não identificado no Dashboard.");
@@ -599,14 +655,22 @@ async function carregarDashboard() {
        CALCULAR INFORMAÇÕES
     ============================== */
 
-    const total = horarios.length;
+  
+const total = horarios.length;
 
-    const reservados = reservas.length;
+const concluidos = reservas.filter(
+    reserva => reserva.status === "concluido"
+).length;
 
-    const livres = Math.max(
-        total - reservados,
-        0
-    );
+const reservados = reservas.filter(
+    reserva => reserva.status === "reservado"
+).length;
+
+const livres = Math.max(
+    total - reservados - concluidos,
+    0
+);
+
 
 
     /* ==============================
@@ -641,6 +705,12 @@ async function carregarDashboard() {
         reservadosElemento.textContent = reservados;
     }
 
+    
+if (concluidosElemento) {
+    concluidosElemento.textContent = concluidos;
+}
+
+
     if (livresElemento) {
         livresElemento.textContent = livres;
     }
@@ -654,28 +724,21 @@ async function carregarDashboard() {
    ATUALIZAR GRÁFICO
 ================================ */
 
-const grafico =
-    document.getElementById("graficoHorarios");
+const grafico = document.getElementById("graficoHorarios");
+
 if (grafico) {
-
-    let porcentagemReservados = 0;
-
-    if (total > 0) {
-        porcentagemReservados =
-            (reservados / total) * 100;
-    }
-
     if (total === 0) {
-
         grafico.style.background = "#183027";
-
     } else {
+        const porcentagemLivres = (livres / total) * 100;
+        const porcentagemReservados = (reservados / total) * 100;
+        const porcentagemConcluidos = (concluidos / total) * 100;
 
-        grafico.style.background =
-            `conic-gradient(
-                #3b82f6 0% ${porcentagemReservados}%,
-                #00e676 ${porcentagemReservados}% 100%
-            )`;
+        grafico.style.background = `conic-gradient(
+            #3982F6 0% ${porcentagemLivres}%,
+            #F59E0B ${porcentagemLivres}% ${porcentagemLivres + porcentagemReservados}%,
+            #00D982 ${porcentagemLivres + porcentagemReservados}% ${porcentagemLivres + porcentagemReservados + porcentagemConcluidos}%
+        )`;
     }
 }
 
@@ -1076,4 +1139,3 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", fecharMenu);
     });
 });
-
