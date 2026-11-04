@@ -953,10 +953,9 @@ body {
 ================================ */
 
 #listaReservas {
-    display: flex;
-    flex-direction: column;
-
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
 }
 
 .reserva-item {
@@ -1071,6 +1070,79 @@ body {
 
 .menu-overlay {
     display: none;
+}
+
+
+
+/* =========================================
+   NOVO LAYOUT - MINHA AGENDA
+========================================= */
+
+/* COMPUTADOR: 4 cartões por linha */
+#listaReservas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+}
+
+/* Cartões de agendamento */
+#listaReservas .reserva-item {
+    min-width: 0;
+    height: 100%;
+    padding: 16px;
+    overflow-wrap: anywhere;
+}
+
+/* Mensagens de carregamento e agenda vazia */
+#listaReservas > p {
+    grid-column: 1 / -1;
+}
+
+/* TABLET: 3 cartões por linha */
+@media (min-width: 701px) and (max-width: 950px) {
+
+    #listaReservas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+/* CELULAR: 2 cartões por linha */
+@media (max-width: 700px) {
+
+    #listaReservas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    #listaReservas .reserva-item {
+        padding: 11px;
+    }
+
+    #listaReservas .reserva-item strong {
+        font-size: 14px;
+    }
+
+    #listaReservas .reserva-item p {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    #listaReservas .btn-whatsapp-reserva,
+    #listaReservas .btn-concluir-reserva,
+    #listaReservas .btn-cancelar-reserva {
+        display: block;
+        width: 100%;
+        margin: 7px 0 0;
+        padding: 9px 5px;
+        font-size: 10px;
+        box-sizing: border-box;
+    }
+
 }
 
 
