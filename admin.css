@@ -1073,79 +1073,6 @@ body {
 }
 
 
-
-/* =========================================
-   NOVO LAYOUT - MINHA AGENDA
-========================================= */
-
-/* COMPUTADOR: 4 cartões por linha */
-#listaReservas {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
-
-    max-height: none;
-    overflow: visible;
-    padding-right: 0;
-}
-
-/* Cartões de agendamento */
-#listaReservas .reserva-item {
-    min-width: 0;
-    height: 100%;
-    padding: 16px;
-    overflow-wrap: anywhere;
-}
-
-/* Mensagens de carregamento e agenda vazia */
-#listaReservas > p {
-    grid-column: 1 / -1;
-}
-
-/* TABLET: 3 cartões por linha */
-@media (min-width: 701px) and (max-width: 950px) {
-
-    #listaReservas {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-}
-
-/* CELULAR: 2 cartões por linha */
-@media (max-width: 700px) {
-
-    #listaReservas {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-    }
-
-    #listaReservas .reserva-item {
-        padding: 11px;
-    }
-
-    #listaReservas .reserva-item strong {
-        font-size: 14px;
-    }
-
-    #listaReservas .reserva-item p {
-        font-size: 11px;
-        line-height: 1.5;
-    }
-
-    #listaReservas .btn-whatsapp-reserva,
-    #listaReservas .btn-concluir-reserva,
-    #listaReservas .btn-cancelar-reserva {
-        display: block;
-        width: 100%;
-        margin: 7px 0 0;
-        padding: 9px 5px;
-        font-size: 10px;
-        box-sizing: border-box;
-    }
-
-}
-
-
 /* ==============================
    TABLET
 ================================ */
@@ -1404,6 +1331,79 @@ body {
     }
 
 }
+
+
+/* =========================================
+   NOVO LAYOUT - MINHA AGENDA
+========================================= */
+
+/* COMPUTADOR: 4 cartões por linha */
+#listaReservas {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+}
+
+/* Cartões de agendamento */
+#listaReservas .reserva-item {
+    min-width: 0;
+    height: 100%;
+    padding: 16px;
+    overflow-wrap: anywhere;
+}
+
+/* Mensagens de carregamento e agenda vazia */
+#listaReservas > p {
+    grid-column: 1 / -1;
+}
+
+/* TABLET: 3 cartões por linha */
+@media (min-width: 701px) and (max-width: 950px) {
+
+    #listaReservas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+/* CELULAR: 2 cartões por linha */
+@media (max-width: 700px) {
+
+    #listaReservas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    #listaReservas .reserva-item {
+        padding: 11px;
+    }
+
+    #listaReservas .reserva-item strong {
+        font-size: 14px;
+    }
+
+    #listaReservas .reserva-item p {
+        font-size: 11px;
+        line-height: 1.5;
+    }
+
+    #listaReservas .btn-whatsapp-reserva,
+    #listaReservas .btn-concluir-reserva,
+    #listaReservas .btn-cancelar-reserva {
+        display: block;
+        width: 100%;
+        margin: 7px 0 0;
+        padding: 9px 5px;
+        font-size: 10px;
+        box-sizing: border-box;
+    }
+
+}
+
 
 /* =========================================
    NOVO CADASTRO DE HORÁRIOS
@@ -1836,3 +1836,299 @@ body {
     }
 }
 
+
+
+/* =========================================
+   PAINEL FINANCEIRO - CLICKDEV
+========================================= */
+
+
+/* =========================================
+   TÍTULOS DAS TELAS FINANCEIRAS
+========================================= */
+
+.titulo-pagina {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 26px;
+}
+
+.titulo-destaque {
+    display: block;
+
+    color: var(--verde);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 6px;
+}
+
+.titulo-pagina h2 {
+    color: var(--branco);
+
+    font-size: 27px;
+
+    margin-bottom: 6px;
+}
+
+.titulo-pagina p {
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   CARDS FINANCEIROS
+========================================= */
+
+.financeiro-dia,
+.financeiro-grafico {
+    margin-bottom: 22px;
+}
+
+
+/* =========================================
+   FATURAMENTO EM DESTAQUE
+========================================= */
+
+.financeiro-valor-dia {
+    display: flex;
+    align-items: center;
+
+    min-height: 65px;
+}
+
+.financeiro-valor-dia strong {
+    color: var(--verde);
+
+    font-size: 32px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   ÁREA DOS GRÁFICOS
+========================================= */
+
+.grafico-financeiro {
+    width: 100%;
+    min-height: 100px;
+
+    overflow: visible;
+}
+
+.grafico-horizontal {
+    width: 100%;
+}
+
+
+/* =========================================
+   LISTA DE BARRAS HORIZONTAIS
+========================================= */
+
+.grafico-lista {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    width: 100%;
+}
+
+
+/* LINHA DO GRÁFICO */
+
+.grafico-linha {
+    display: grid;
+
+    grid-template-columns: 55px minmax(40px, 1fr) 105px;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 22px;
+}
+
+
+/* NOME DO DIA OU MÊS */
+
+.grafico-nome {
+    color: var(--texto-secundario);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* FUNDO DA BARRA */
+
+.grafico-trilho {
+    width: 100%;
+    height: 14px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+/* BARRA DE FATURAMENTO */
+
+.grafico-preenchimento {
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #087f55,
+        #00d982
+    );
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
+
+
+/* VALOR AO LADO DA BARRA */
+
+.grafico-valor {
+    color: var(--branco);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-align: right;
+
+    white-space: nowrap;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================
+   ESCALA DE VALORES
+========================================= */
+
+.grafico-escala {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 18px;
+    margin-left: 67px;
+
+    color: var(--texto-secundario);
+
+    font-size: 10px;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================
+   GRÁFICO SEMANAL
+========================================= */
+
+#graficoFaturamentoSemanal .grafico-lista {
+    gap: 20px;
+}
+
+
+/* =========================================
+   GRÁFICO MENSAL
+========================================= */
+
+#graficoFaturamentoMensal .grafico-lista {
+    gap: 12px;
+}
+
+#graficoFaturamentoMensal .grafico-linha {
+    grid-template-columns: 35px minmax(40px, 1fr) 105px;
+}
+
+#graficoFaturamentoMensal .grafico-nome {
+    font-size: 11px;
+}
+
+
+/* =========================================
+   GRÁFICO ANUAL
+========================================= */
+
+#graficoFaturamentoAnual .grafico-lista {
+    gap: 18px;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE - TABLETS
+========================================= */
+
+@media (max-width: 950px) {
+
+    .financeiro-valor-dia strong {
+        font-size: 29px;
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVIDADE - CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+    .titulo-pagina h2 {
+        font-size: 23px;
+    }
+
+    .titulo-pagina p {
+        font-size: 12px;
+    }
+
+    .financeiro-valor-dia strong {
+        font-size: 27px;
+    }
+
+    .grafico-lista {
+        gap: 17px;
+    }
+
+    .grafico-linha {
+        grid-template-columns: 35px minmax(30px, 1fr) 85px;
+
+        gap: 7px;
+    }
+
+    .grafico-nome {
+        font-size: 10px;
+    }
+
+    .grafico-valor {
+        font-size: 10px;
+    }
+
+    .grafico-escala {
+        margin-left: 42px;
+
+        font-size: 9px;
+    }
+
+    #graficoFaturamentoMensal .grafico-lista {
+        gap: 13px;
+    }
+
+    #graficoFaturamentoMensal .grafico-valor {
+        font-size: 9px;
+    }
+
+}

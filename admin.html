@@ -171,6 +171,37 @@
         Horários de hoje
     </button>
 
+    
+<!-- FINANCEIRO DIÁRIO -->
+<button
+    type="button"
+    class="menu-item"
+    data-tela="tela-financeiro-diario"
+>
+    <span>R$</span>
+    Financeiro Diário
+</button>
+
+<!-- FINANCEIRO MENSAL -->
+<button
+    type="button"
+    class="menu-item"
+    data-tela="tela-financeiro-mensal"
+>
+    <span>R$</span>
+    Financeiro Mensal
+</button>
+
+<!-- FINANCEIRO ANUAL -->
+<button
+    type="button"
+    class="menu-item"
+    data-tela="tela-financeiro-anual"
+>
+    <span>R$</span>
+    Financeiro Anual
+</button>
+
 </nav>
 
             <button
@@ -335,6 +366,145 @@
                 </div>
 
             </section>
+
+            
+
+<!-- =========================
+     FINANCEIRO DIÁRIO
+========================== -->
+<section
+    id="tela-financeiro-diario"
+    class="tela-sistema"
+>
+    <div class="titulo-pagina">
+        <div>
+            <span class="titulo-destaque">CONTROLE FINANCEIRO</span>
+            <h2>Financeiro Diário</h2>
+            <p>Acompanhe seu faturamento de hoje e durante a semana.</p>
+        </div>
+    </div>
+
+    <!-- FATURAMENTO DO DIA -->
+    <section class="card-sistema financeiro-dia">
+        <div class="card-cabecalho">
+            <div>
+                <h3>Faturamento de hoje</h3>
+                <p>Valor recebido pelos atendimentos concluídos hoje.</p>
+            </div>
+        </div>
+
+        <div class="financeiro-valor-dia">
+            <strong id="valorFaturamentoDia">R$ 0,00</strong>
+        </div>
+    </section>
+
+    <!-- GRÁFICO SEMANAL -->
+    <section class="card-sistema financeiro-grafico">
+        <div class="card-cabecalho">
+            <div>
+                <h3>Faturamento semanal</h3>
+                <p>Acompanhe seus ganhos de segunda a domingo.</p>
+            </div>
+        </div>
+
+        <div
+            id="graficoFaturamentoSemanal"
+            class="grafico-financeiro"
+        ></div>
+    </section>
+</section>
+
+
+<!-- =========================
+     FINANCEIRO MENSAL
+========================== -->
+<section
+    id="tela-financeiro-mensal"
+    class="tela-sistema"
+>
+    <div class="titulo-pagina">
+        <div>
+            <span class="titulo-destaque">CONTROLE FINANCEIRO</span>
+            <h2>Financeiro Mensal</h2>
+            <p>Visualize seu faturamento durante o mês.</p>
+        </div>
+    </div>
+
+    <!-- FATURAMENTO DO MÊS -->
+    <section class="card-sistema financeiro-dia">
+        <div class="card-cabecalho">
+            <div>
+                <h3>Faturamento do mês</h3>
+                <p>Total recebido pelos atendimentos concluídos neste mês.</p>
+            </div>
+        </div>
+
+        <div class="financeiro-valor-dia">
+            <strong id="valorFaturamentoMensal">R$ 0,00</strong>
+        </div>
+    </section>
+
+    <!-- GRÁFICO MENSAL -->
+    <section class="card-sistema financeiro-grafico">
+        <div class="card-cabecalho">
+            <div>
+                <h3>Faturamento por dia</h3>
+                <p>Veja quanto foi faturado em cada dia do mês.</p>
+            </div>
+        </div>
+
+        <div
+            id="graficoFaturamentoMensal"
+            class="grafico-financeiro"
+        ></div>
+    </section>
+</section>
+
+
+<!-- =========================
+     FINANCEIRO ANUAL
+========================== -->
+<section
+    id="tela-financeiro-anual"
+    class="tela-sistema"
+>
+    <div class="titulo-pagina">
+        <div>
+            <span class="titulo-destaque">CONTROLE FINANCEIRO</span>
+            <h2>Financeiro Anual</h2>
+            <p>Acompanhe a evolução do seu faturamento durante o ano.</p>
+        </div>
+    </div>
+
+    <!-- FATURAMENTO DO ANO -->
+    <section class="card-sistema financeiro-dia">
+        <div class="card-cabecalho">
+            <div>
+                <h3>Faturamento do ano</h3>
+                <p>Total recebido pelos atendimentos concluídos neste ano.</p>
+            </div>
+        </div>
+
+        <div class="financeiro-valor-dia">
+            <strong id="valorFaturamentoAnual">R$ 0,00</strong>
+        </div>
+    </section>
+
+    <!-- GRÁFICO ANUAL -->
+    <section class="card-sistema financeiro-grafico">
+        <div class="card-cabecalho">
+            <div>
+                <h3>Faturamento por mês</h3>
+                <p>Compare seus ganhos de janeiro a dezembro.</p>
+            </div>
+        </div>
+
+        <div
+            id="graficoFaturamentoAnual"
+            class="grafico-financeiro"
+        ></div>
+    </section>
+</section>
 
 <!-- =========================
      CADASTRAR HORÁRIOS

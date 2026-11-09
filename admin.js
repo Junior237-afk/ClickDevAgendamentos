@@ -396,6 +396,7 @@ function abrirWhatsApp(numero) {
 }
 
 
+
 async function concluirReserva(id) {
     const confirmar = confirm(
         "Deseja marcar este atendimento como concluído?"
@@ -412,7 +413,10 @@ async function concluirReserva(id) {
 
     const { data, error } = await supabaseClient
         .from("reservas")
-        .update({ status: "concluido" })
+        .update({
+            status: "concluido",
+            concluida_em: new Date().toISOString()
+        })
         .eq("id", id)
         .eq("cliente_id", cliente.id)
         .eq("status", "reservado")
@@ -1138,4 +1142,403 @@ document.addEventListener("DOMContentLoaded", () => {
     menuLateral.querySelectorAll(".menu-item").forEach((item) => {
         item.addEventListener("click", fecharMenu);
     });
+});
+
+
+
+// =====================================
+// PAINEL FINANCEIRO
+// =====================================
+
+async function carregarFinanceiro() {
+
+    const cliente = await obterClienteLogado();
+
+    if (!cliente) {
+        console.error("Cliente não identificado no Financeiro.");
+        return;
+    }
+
+    const elementoDia =
+        document.getElementById("valorFaturamentoDia");
+
+    const elementoMensal =
+        document.getElementById("valorFaturamentoMensal");
+
+    const elementoAnual =
+        document.getElementById("valorFaturamentoAnual");
+
+    const graficoSemanal =
+        document.getElementById("graficoFaturamentoSemanal");
+
+    const graficoMensal =
+        document.getElementById("graficoFaturamentoMensal");
+
+    const graficoAnual =
+        document.getElementById("graficoFaturamentoAnual");
+
+    if (
+        !elementoDia ||
+        !elementoMensal ||
+        !elementoAnual ||
+        !graficoSemanal ||
+        !graficoMensal ||
+        !graficoAnual
+    ) {
+        console.error("Elementos do Financeiro não encontrados.");
+        return;
+    }
+
+    // =====================================
+    // DEFINIR PERÍODOS
+    // =====================================
+
+    const hoje = new Date();
+
+    const inicioHoje = new Date(
+        hoje.getFullYear(),
+        hoje.getMonth(),
+        hoje.getDate()
+    );
+
+    const fimHoje = new Date(
+        hoje.getFullYear(),
+        hoje.getMonth(),
+        hoje.getDate() + 1
+    );
+
+    const inicioAno = new Date(
+        hoje.getFullYear(),
+        0,
+        1
+    );
+
+    // =====================================
+    // BUSCAR ATENDIMENTOS CONCLUÍDOS
+    // =====================================
+
+    const { data, error } = await supabaseClient
+        .from("reservas")
+        .select("valor_servico, concluida_em")
+        .eq("cliente_id", cliente.id)
+        .eq("status", "concluido")
+        .gte("concluida_em", inicioAno.toISOString())
+        .lt("concluida_em", fimHoje.toISOString());
+
+    if (error) {
+        console.error("Erro ao carregar financeiro:", error);
+        return;
+    }
+
+    console.log("Cliente financeiro:", cliente.id);
+console.log("Atendimentos encontrados:", data);
+console.log("Quantidade de atendimentos:", data?.length);
+    // =====================================
+    // FUNÇÕES AUXILIARES
+    // =====================================
+
+    function chaveData(data) {
+
+        const ano = data.getFullYear();
+        const mes = String(data.getMonth() + 1).padStart(2, "0");
+        const dia = String(data.getDate()).padStart(2, "0");
+
+        return `${ano}-${mes}-${dia}`;
+    }
+
+    function formatarReal(valor) {
+
+        return valor.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+    }
+
+    // =====================================
+    // ORGANIZAR FATURAMENTO POR DIA
+    // =====================================
+
+    const faturamentoPorDia = {};
+
+    (data || []).forEach((reserva) => {
+
+        if (!reserva.concluida_em) return;
+
+        const dataConclusao = new Date(reserva.concluida_em);
+
+        const chave = chaveData(dataConclusao);
+
+        const valor = Number(reserva.valor_servico) || 0;
+
+        faturamentoPorDia[chave] =
+            (faturamentoPorDia[chave] || 0) + valor;
+    });
+
+    // =====================================
+    // CALCULAR FATURAMENTO DIÁRIO
+    // =====================================
+
+    const faturamentoDia =
+        faturamentoPorDia[chaveData(inicioHoje)] || 0;
+
+    elementoDia.textContent = formatarReal(faturamentoDia);
+
+    // =====================================
+    // CALCULAR INÍCIO DA SEMANA
+    // SEGUNDA-FEIRA
+    // =====================================
+
+    const inicioSemana = new Date(inicioHoje);
+
+    const diaSemana = inicioSemana.getDay();
+
+    inicioSemana.setDate(
+        inicioSemana.getDate() -
+        (diaSemana === 0 ? 6 : diaSemana - 1)
+    );
+
+    const diasSemana = [];
+
+    for (let i = 0; i < 7; i++) {
+
+        const dataDia = new Date(inicioSemana);
+
+        dataDia.setDate(inicioSemana.getDate() + i);
+
+        const chave = chaveData(dataDia);
+
+        diasSemana.push({
+            nome: dataDia.toLocaleDateString("pt-BR", {
+                weekday: "short"
+            }),
+            valor: faturamentoPorDia[chave] || 0
+        });
+    }
+
+    // =====================================
+    // CALCULAR FATURAMENTO MENSAL
+    // =====================================
+
+    const diasMes = [];
+
+    const quantidadeDias = new Date(
+        hoje.getFullYear(),
+        hoje.getMonth() + 1,
+        0
+    ).getDate();
+
+    let faturamentoMensal = 0;
+
+    for (let i = 1; i <= quantidadeDias; i++) {
+
+        const dataDia = new Date(
+            hoje.getFullYear(),
+            hoje.getMonth(),
+            i
+        );
+
+        const chave = chaveData(dataDia);
+
+        const valor = faturamentoPorDia[chave] || 0;
+
+        faturamentoMensal += valor;
+
+        diasMes.push({
+            nome: String(i),
+            valor: valor
+        });
+    }
+
+    elementoMensal.textContent =
+        formatarReal(faturamentoMensal);
+
+    // =====================================
+    // CALCULAR FATURAMENTO ANUAL
+    // =====================================
+
+    const mesesAno = [];
+
+    const nomesMeses = [
+        "Jan", "Fev", "Mar", "Abr",
+        "Mai", "Jun", "Jul", "Ago",
+        "Set", "Out", "Nov", "Dez"
+    ];
+
+    let faturamentoAnual = 0;
+
+    for (let mes = 0; mes < 12; mes++) {
+
+        let totalMes = 0;
+
+        const quantidadeDiasMes = new Date(
+            hoje.getFullYear(),
+            mes + 1,
+            0
+        ).getDate();
+
+        for (let dia = 1; dia <= quantidadeDiasMes; dia++) {
+
+            const dataDia = new Date(
+                hoje.getFullYear(),
+                mes,
+                dia
+            );
+
+            const chave = chaveData(dataDia);
+
+            totalMes += faturamentoPorDia[chave] || 0;
+        }
+
+        faturamentoAnual += totalMes;
+
+        mesesAno.push({
+            nome: nomesMeses[mes],
+            valor: totalMes
+        });
+    }
+
+    elementoAnual.textContent =
+        formatarReal(faturamentoAnual);
+
+    
+    // =====================================
+    // DESENHAR GRÁFICOS HORIZONTAIS
+    // =====================================
+
+    function desenharGrafico(elemento, valores) {
+
+        const maiorValor = Math.max(
+            ...valores.map(item => item.valor),
+            0
+        );
+
+        // Define uma escala adequada para os valores
+        function calcularEscala(valor) {
+
+            if (valor <= 0) return 1;
+
+            const valorBase = valor / 3;
+            const magnitude = Math.pow(
+                10,
+                Math.floor(Math.log10(valorBase))
+            );
+
+            const normalizado = valorBase / magnitude;
+
+            let passo;
+
+            if (normalizado <= 1) {
+                passo = 1;
+            } else if (normalizado <= 2) {
+                passo = 2;
+            } else if (normalizado <= 5) {
+                passo = 5;
+            } else {
+                passo = 10;
+            }
+
+            return passo * magnitude * 3;
+        }
+
+        const escala = calcularEscala(maiorValor);
+
+        // Barras e valores
+        elemento.innerHTML = `
+            <div class="grafico-horizontal">
+
+                <div class="grafico-lista">
+
+                    ${valores.map(item => {
+
+                        const largura = (item.valor / escala) * 100;
+
+                        return `
+                            <div class="grafico-linha">
+
+                                <span class="grafico-nome">
+                                    ${item.nome}
+                                </span>
+
+                                <div class="grafico-trilho">
+
+                                    <div
+                                        class="grafico-preenchimento"
+                                        style="width: ${largura}%"
+                                    ></div>
+
+                                </div>
+
+                                <span class="grafico-valor">
+                                    ${formatarReal(item.valor)}
+                                </span>
+
+                            </div>
+                        `;
+
+                    }).join("")}
+
+                </div>
+
+                <div class="grafico-escala">
+
+                    <span>R$ 0</span>
+
+                    <span>${formatarReal(escala / 3)}</span>
+
+                    <span>${formatarReal((escala / 3) * 2)}</span>
+
+                    <span>${formatarReal(escala)}</span>
+
+                </div>
+
+            </div>
+        `;
+    }
+
+   
+    // =====================================
+    // ATUALIZAR OS TRÊS GRÁFICOS
+    // =====================================
+
+    desenharGrafico(graficoSemanal, diasSemana);
+
+    desenharGrafico(graficoMensal, diasMes);
+
+    desenharGrafico(graficoAnual, mesesAno);
+
+} // FIM DA FUNÇÃO carregarFinanceiro()
+
+
+// =====================================
+// NAVEGAÇÃO FINANCEIRA
+// =====================================
+
+const botoesFinanceiros = [
+    "tela-financeiro-diario",
+    "tela-financeiro-mensal",
+    "tela-financeiro-anual"
+];
+
+botoesFinanceiros.forEach((idTela) => {
+
+    const botao = document.querySelector(
+        `[data-tela="${idTela}"]`
+    );
+
+    if (botao) {
+
+        botao.addEventListener("click", () => {
+
+            console.log("Abrindo tela financeira:", idTela);
+
+            carregarFinanceiro();
+
+        });
+
+    } else {
+
+        console.error("Botão financeiro não encontrado:", idTela);
+
+    }
+
 });
