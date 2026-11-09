@@ -106,7 +106,7 @@ header {
 
 /* BOTÃO TESTAR DO MENU */
 
-.btn-agendar {
+.btnTestar {
     background-color: var(--clickdev-verde);
 
     color: var(--clickdev-preto) !important;
@@ -118,7 +118,7 @@ header {
     transition: 0.3s;
 }
 
-.btn-agendar:hover {
+.btnTestar:hover {
     background-color: var(--clickdev-verde-claro);
 
     color: var(--clickdev-preto) !important;
@@ -610,7 +610,7 @@ header {
 
 /* BOTÃO CONFIRMAR */
 
-.botao-confirmar {
+.btnAgendar {
     width: 100%;
 
     padding: 15px;
@@ -632,7 +632,7 @@ header {
     transition: 0.3s;
 }
 
-.botao-confirmar:hover {
+.btnAgendar:hover {
     background-color: var(--clickdev-verde-escuro);
 
     transform: translateY(-2px);

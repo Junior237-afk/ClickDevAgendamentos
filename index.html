@@ -243,7 +243,7 @@
                         </p>
 
                         <strong class="preco-servico">
-                            ClickDev
+                            200,00
                         </strong>
 
                         <a href="#agendamento">
@@ -267,7 +267,7 @@
                         </p>
 
                         <strong class="preco-servico">
-                            ClickDev
+                            100,00
                         </strong>
 
                         <a href="#agendamento">
@@ -291,7 +291,7 @@
                         </p>
 
                         <strong class="preco-servico">
-                            ClickDev
+                            1.000,00
                         </strong>
 
                         <a href="#agendamento">
@@ -378,134 +378,119 @@
 
             <div class="formulario-agendamento">
 
+<!-- SERVIÇO -->
+<div class="campo">
 
-                <!-- SERVIÇO -->
+    <label for="servico">
+        Serviço
+    </label>
 
-                <div class="campo">
+    <select id="servico">
 
-                    <label for="servico">
-                        Serviço
-                    </label>
+        <option value="">
+            Selecione um serviço
+        </option>
 
-                    <select id="servico">
+        <option value="Site Profissional" data-valor="200.00">
+            Site Profissional
+        </option>
 
-                        <option value="">
-                            Selecione um serviço
-                        </option>
+        <option value="Sistema de Agendamento" data-valor="100.00">
+            Sistema de Agendamento
+        </option>
 
-                        <option value="Site Profissional">
-                            Site Profissional
-                        </option>
+        <option value="Sistema Web" data-valor="1000.00">
+            Sistema Web
+        </option>
 
-                        <option value="Sistema de Agendamento">
-                            Sistema de Agendamento
-                        </option>
+    </select>
 
-                        <option value="Sistema Web">
-                            Sistema Web
-                        </option>
-
-                    </select>
-
-                </div>
+</div>
 
 
+<!-- DATA -->
+<div class="campo">
 
-                <!-- DATA -->
+    <label for="data">
+        Data
+    </label>
 
-                <div class="campo">
+    <select id="data">
 
-                    <label for="data">
-                        Data
-                    </label>
+        <option value="">
+            Selecione uma data
+        </option>
 
-                    <select id="data">
+    </select>
 
-                        <option value="">
-                            Selecione uma data
-                        </option>
-
-                    </select>
-
-                </div>
+</div>
 
 
+<!-- HORÁRIO -->
+<div class="campo">
 
-                <!-- HORÁRIO -->
+    <label for="horario">
+        Horário
+    </label>
 
-                <div class="campo">
+    <select id="horario" disabled>
 
-                    <label for="horario">
-                        Horário
-                    </label>
+        <option value="">
+            Primeiro selecione uma data
+        </option>
 
-                    <select
-                        id="horario"
-                        disabled
-                    >
+    </select>
 
-                        <option value="">
-                            Primeiro selecione uma data
-                        </option>
-
-                    </select>
-
-                </div>
+</div>
 
 
+<!-- NOME -->
+<div class="campo">
 
-                <!-- NOME -->
+    <label for="nome">
+        Nome
+    </label>
 
-                <div class="campo">
+    <input
+        type="text"
+        id="nome"
+        placeholder="Digite seu nome"
+        required
+    >
 
-                    <label for="nome">
-                        Nome
-                    </label>
+</div>
 
-                    <input
-                        type="text"
-                        id="nome"
-                        placeholder="Digite seu nome"
-                    >
+<!-- WHATSAPP -->
+<div class="campo">
 
-                </div>
+    <label for="whatsapp">
+        WhatsApp
+    </label>
 
+    <input
+        type="tel"
+        id="whatsapp"
+        placeholder="Digite seu número de WhatsApp"
+        required
+    >
 
-
-                <!-- WHATSAPP -->
-
-                <div class="campo">
-
-                    <label for="whatsapp">
-                        WhatsApp
-                    </label>
-
-                    <input
-                        type="tel"
-                        id="whatsapp"
-                        placeholder="(99) 99999-9999"
-                    >
-
-                </div>
+</div>
 
 
+<!-- BOTÃO AGENDAR -->
+<div class="campo">
 
-                <!-- BOTÃO -->
+    <button
+        type="button"
+        id="btnAgendar"
+        class="btnAgendar"
+    >
+        Agendar
+    </button>
 
-                <button
-                    type="button"
-                    class="botao-confirmar"
-                    id="btnAgendar"
-                >
-                    Confirmar teste
-                </button>
+</div>
 
-
-            </div>
-
-        </section>
-
-
+</section>
 
         <!-- =========================
              CONTATO
