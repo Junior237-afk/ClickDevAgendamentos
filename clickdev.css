@@ -1131,3 +1131,410 @@ footer p {
         font-size: 25px;
     }
 }
+
+
+
+/* =========================================
+   TEMA VISUAL DO AGENDAMENTO — CLICKDEV
+   ALTERE SOMENTE AS CORES DESTE BLOCO
+========================================= */
+
+.agendamento {
+    --tema-destaque: #d63384;
+    --tema-destaque-escuro: #a92164;
+    --tema-fundo-1: #2b1723;
+    --tema-fundo-2: #1c1018;
+    --tema-fundo-card: #35202c;
+    --tema-texto: #f8edf3;
+    --tema-texto-secundario: #c9b6c1;
+    --tema-borda: rgba(214, 51, 132, 0.22);
+    --tema-brilho: rgba(214, 51, 132, 0.18);
+}
+
+/* =========================================
+   CARDS DE SERVIÇOS
+========================================= */
+
+.servicos-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.servico-card {
+    position: relative;
+    overflow: hidden;
+    padding: 12px;
+    border: 1px solid var(--tema-borda);
+    border-radius: 16px;
+    background: linear-gradient(
+        145deg,
+        var(--tema-fundo-1),
+        var(--tema-fundo-2)
+    );
+    color: var(--tema-texto);
+    text-align: center;
+    transition: all 0.25s ease;
+}
+
+.servico-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--tema-destaque);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.servico-card.selecionado {
+    border: 2px solid var(--tema-destaque);
+    background: linear-gradient(
+        145deg,
+        var(--tema-fundo-card),
+        var(--tema-fundo-1)
+    );
+    box-shadow: 0 0 18px var(--tema-brilho);
+}
+
+.servico-imagem {
+    width: 100%;
+    height: 105px;
+    margin-bottom: 14px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(
+        135deg,
+        var(--tema-fundo-card),
+        var(--tema-fundo-1)
+    );
+    border: 1px solid var(--tema-borda);
+}
+
+.servico-imagem::after {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--tema-destaque);
+}
+
+.servico-imagem-site::after {
+    content: "</>";
+}
+
+.servico-imagem-agendamento::after {
+    content: "▦";
+}
+
+.servico-imagem-sistema::after {
+    content: "⌘";
+}
+
+.servico-nome {
+    font-size: 14px;
+    line-height: 1.4;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.servico-valor {
+    display: block;
+    margin-top: 8px;
+    font-size: 16px;
+    color: var(--tema-destaque);
+}
+
+/* =========================================
+   CALENDÁRIO
+========================================= */
+
+.calendario-container {
+    border: 1px solid var(--tema-borda);
+    border-radius: 16px;
+    background: linear-gradient(
+        145deg,
+        var(--tema-fundo-1),
+        var(--tema-fundo-2)
+    );
+}
+
+.dia-calendario.disponivel {
+    background: var(--tema-fundo-card);
+    color: var(--tema-texto);
+    border-color: var(--tema-borda);
+}
+
+.dia-calendario.disponivel:hover {
+    background: var(--tema-brilho);
+    border-color: var(--tema-destaque);
+}
+
+.dia-calendario.selecionado {
+    background: var(--tema-destaque);
+    color: #fff;
+    border-color: var(--tema-destaque);
+}
+
+.dia-calendario:disabled {
+    opacity: 0.4;
+}
+
+/* =========================================
+   HORÁRIOS DISPONÍVEIS
+========================================= */
+
+.horarios-disponiveis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.horario-card {
+    min-height: 46px;
+    padding: 12px 8px;
+    border: 1px solid var(--tema-borda);
+    border-radius: 25px;
+    background: linear-gradient(
+        145deg,
+        var(--tema-fundo-card),
+        var(--tema-fundo-1)
+    );
+    color: var(--tema-texto);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.horario-card:hover:not(:disabled) {
+    border-color: var(--tema-destaque);
+    background: var(--tema-brilho);
+    transform: translateY(-2px);
+}
+
+.horario-card.selecionado {
+    border-color: var(--tema-destaque);
+    background: var(--tema-destaque);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 0 15px var(--tema-brilho);
+}
+
+.horario-card.agendado,
+.horario-card:disabled {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #292929;
+    color: #858585;
+    cursor: not-allowed;
+    opacity: 0.75;
+    box-shadow: none;
+    transform: none;
+}
+
+.mensagem-horarios {
+    grid-column: 1 / -1;
+    padding: 16px;
+    border: 1px dashed var(--tema-borda);
+    border-radius: 12px;
+    background: var(--tema-brilho);
+    color: var(--tema-texto-secundario);
+    font-size: 13px;
+    text-align: center;
+}
+
+/* =========================================
+   RESUMO DO AGENDAMENTO
+========================================= */
+
+.agendamento .resumo-agendamento {
+    position: relative;
+    overflow: hidden;
+    margin: 28px 0;
+    padding: 22px;
+    border: 1px solid var(--tema-borda);
+    border-radius: 17px;
+    background: linear-gradient(
+        145deg,
+        var(--tema-fundo-1),
+        var(--tema-fundo-2)
+    );
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+.agendamento .resumo-agendamento::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--tema-destaque),
+        transparent
+    );
+}
+
+.agendamento .resumo-agendamento h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    color: var(--tema-texto);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.agendamento .resumo-agendamento h3 span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin: 0;
+    border-radius: 10px;
+    background: var(--tema-brilho);
+    color: var(--tema-destaque);
+    font-size: 19px;
+}
+
+.agendamento .resumo-servico {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.agendamento .resumo-imagem {
+    flex-shrink: 0;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--tema-borda);
+    border-radius: 11px;
+    background: var(--tema-fundo-card);
+}
+
+.agendamento .resumo-imagem::after {
+    content: "</>";
+    color: var(--tema-destaque);
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.agendamento .resumo-servico strong {
+    display: block;
+    margin: 0 0 6px;
+    color: var(--tema-texto);
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.agendamento .resumo-servico span {
+    display: block;
+    margin: 0;
+    color: var(--tema-destaque);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.agendamento .resumo-data-horario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.agendamento .resumo-data-horario > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding: 13px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.agendamento .resumo-data-horario > div > span {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    border-radius: 9px;
+    background: var(--tema-brilho);
+    color: var(--tema-destaque);
+    font-size: 17px;
+}
+
+.agendamento .resumo-data-horario strong {
+    display: block;
+    min-width: 0;
+    margin: 0;
+    color: var(--tema-texto);
+    font-size: 12px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .servicos-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .servico-card {
+        padding: 10px;
+    }
+
+    .servico-imagem {
+        height: 85px;
+    }
+
+    .servico-nome {
+        font-size: 13px;
+    }
+
+    .servico-valor {
+        font-size: 14px;
+    }
+
+    .horarios-disponiveis {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .horario-card {
+        min-height: 45px;
+        font-size: 13px;
+    }
+
+    .agendamento .resumo-agendamento {
+        padding: 17px;
+        margin: 23px 0;
+    }
+
+    .agendamento .resumo-data-horario {
+        grid-template-columns: 1fr;
+    }
+
+    .agendamento .resumo-servico {
+        padding: 12px;
+    }
+}

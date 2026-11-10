@@ -353,140 +353,389 @@
 
 
 
+  
+<!-- =========================
+     AMBIENTE DE TESTE
+========================= -->
+
+<section
+    id="agendamento"
+    class="secao agendamento"
+>
+
+    <div class="titulo-secao">
+
+        <h2>
+            Agende seu horário
+        </h2>
+
+        <p>
+            Escolha o serviço, a data e o horário ideal para você!
+        </p>
+
+    </div>
+
+
+    <div class="formulario-agendamento">
+
+        <div class="agendamento-conteudo"></div>
+
+
         <!-- =========================
-             AMBIENTE DE TESTE
+             COLUNA ESQUERDA
         ========================== -->
 
-        <section
-            id="agendamento"
-            class="secao agendamento"
-        >
+        <div class="agendamento-esquerda">
 
-            <div class="titulo-secao">
 
-                <h2>
-                    Ambiente de Teste
-                </h2>
+            <!-- SERVIÇO -->
 
-                <p>
-                    Utilize este formulário para testar
-                    o sistema de agendamentos ClickDev.
-                </p>
+            <div class="campo campo-servico">
+
+                <label for="servico">
+                    1. Selecione o serviço
+                </label>
+
+                <!-- SELECT ORIGINAL PRESERVADO -->
+
+                <select id="servico" class="controle-logico">
+
+                    <option value="">
+                        Selecione um serviço
+                    </option>
+
+                    <option value="Site Profissional" data-valor="200.00">
+                        Site Profissional
+                    </option>
+
+                    <option value="Sistema de Agendamento" data-valor="100.00">
+                        Sistema de Agendamento
+                    </option>
+
+                    <option value="Sistema Web" data-valor="1000.00">
+                        Sistema Web
+                    </option>
+
+                </select>
+
+
+                <!-- CARDS VISUAIS DOS SERVIÇOS -->
+
+                <div class="servicos-cards" id="servicosCards">
+
+                    <button
+                        type="button"
+                        class="servico-card"
+                        data-servico="Site Profissional"
+                    >
+                        <div class="servico-imagem servico-imagem-site"></div>
+
+                        <span class="servico-nome">
+                            Site Profissional
+                        </span>
+
+                        <strong class="servico-valor">
+                            R$ 200,00
+                        </strong>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="servico-card"
+                        data-servico="Sistema de Agendamento"
+                    >
+                        <div class="servico-imagem servico-imagem-agendamento"></div>
+
+                        <span class="servico-nome">
+                            Sistema de Agendamento
+                        </span>
+
+                        <strong class="servico-valor">
+                            R$ 100,00
+                        </strong>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="servico-card"
+                        data-servico="Sistema Web"
+                    >
+                        <div class="servico-imagem servico-imagem-sistema"></div>
+
+                        <span class="servico-nome">
+                            Sistema Web
+                        </span>
+
+                        <strong class="servico-valor">
+                            R$ 1.000,00
+                        </strong>
+
+                    </button>
+
+                </div>
 
             </div>
 
 
-            <div class="formulario-agendamento">
 
-<!-- SERVIÇO -->
-<div class="campo">
+            <!-- DATA -->
 
-    <label for="servico">
-        Serviço
-    </label>
+            <div class="campo campo-data">
 
-    <select id="servico">
-
-        <option value="">
-            Selecione um serviço
-        </option>
-
-        <option value="Site Profissional" data-valor="200.00">
-            Site Profissional
-        </option>
-
-        <option value="Sistema de Agendamento" data-valor="100.00">
-            Sistema de Agendamento
-        </option>
-
-        <option value="Sistema Web" data-valor="1000.00">
-            Sistema Web
-        </option>
-
-    </select>
-
-</div>
+                <label for="data">
+                    2. Escolha a data
+                </label>
 
 
-<!-- DATA -->
-<div class="campo">
+                <!-- SELECT ORIGINAL PRESERVADO -->
 
-    <label for="data">
-        Data
-    </label>
+                <select id="data" class="controle-logico">
 
-    <select id="data">
+                    <option value="">
+                        Selecione uma data
+                    </option>
 
-        <option value="">
-            Selecione uma data
-        </option>
-
-    </select>
-
-</div>
+                </select>
 
 
-<!-- HORÁRIO -->
-<div class="campo">
+                <!-- CALENDÁRIO VISUAL -->
 
-    <label for="horario">
-        Horário
-    </label>
+                <div class="calendario-container">
 
-    <select id="horario" disabled>
+                    <div class="calendario-cabecalho">
 
-        <option value="">
-            Primeiro selecione uma data
-        </option>
+                        <button
+                            type="button"
+                            id="mesAnterior"
+                            class="calendario-navegacao"
+                            aria-label="Mês anterior"
+                        >
+                            &#10094;
+                        </button>
 
-    </select>
+                        <h3 id="mesAnoCalendario">
+                            Novembro 2026
+                        </h3>
 
-</div>
+                        <button
+                            type="button"
+                            id="proximoMes"
+                            class="calendario-navegacao"
+                            aria-label="Próximo mês"
+                        >
+                            &#10095;
+                        </button>
 
-
-<!-- NOME -->
-<div class="campo">
-
-    <label for="nome">
-        Nome
-    </label>
-
-    <input
-        type="text"
-        id="nome"
-        placeholder="Digite seu nome"
-        required
-    >
-
-</div>
-
-<!-- WHATSAPP -->
-<div class="campo">
-
-    <label for="whatsapp">
-        WhatsApp
-    </label>
-
-    <input
-        type="tel"
-        id="whatsapp"
-        placeholder="Digite seu número de WhatsApp"
-        required
-    >
-
-</div>
+                    </div>
 
 
-<!-- BOTÃO AGENDAR -->
-<div class="campo">
+                    <div class="calendario-dias-semana">
 
-    <button
-        type="button"
-        id="btnAgendar"
-        class="btnAgendar"
-    >
-        Agendar
-    </button>
+                        <span>DOM</span>
+                        <span>SEG</span>
+                        <span>TER</span>
+                        <span>QUA</span>
+                        <span>QUI</span>
+                        <span>SEX</span>
+                        <span>SÁB</span>
+
+                    </div>
+
+
+                    <!--
+                        O JAVASCRIPT VAI INSERIR
+                        SOMENTE AS DATAS DISPONÍVEIS
+                        CADASTRADAS PELA MANICURE.
+                    -->
+
+                    <div
+                        class="calendario-dias"
+                        id="calendarioDias"
+                    >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <!-- =========================
+             COLUNA DIREITA
+        ========================== -->
+
+        <div class="agendamento-direita">
+
+
+            <!-- HORÁRIOS -->
+
+            <div class="campo campo-horario">
+
+                <label for="horario">
+                    3. Escolha o horário
+                </label>
+
+
+                <!-- SELECT ORIGINAL PRESERVADO -->
+
+                <select
+                    id="horario"
+                    class="controle-logico"
+                    disabled
+                >
+
+                    <option value="">
+                        Primeiro selecione uma data
+                    </option>
+
+                </select>
+
+
+                <!-- HORÁRIOS VISUAIS -->
+
+                <div
+                    class="horarios-disponiveis"
+                    id="horariosDisponiveis"
+                >
+
+                    <p class="mensagem-horarios">
+                        Selecione uma data para visualizar os horários.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESUMO DO AGENDAMENTO -->
+
+            <div class="resumo-agendamento">
+
+                <h3>
+                    <span>▣</span>
+                    Resumo do agendamento
+                </h3>
+
+
+                <div class="resumo-conteudo">
+
+                    <div class="resumo-servico">
+
+                        <div class="resumo-imagem"></div>
+
+                        <div>
+
+                            <strong id="resumoServico">
+                                Nenhum serviço selecionado
+                            </strong>
+
+                            <span id="resumoValor">
+                                R$ 0,00
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="resumo-data-horario">
+
+                        <div>
+                            <span>▦</span>
+                            <strong id="resumoData">
+                                Selecione uma data
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>◷</span>
+                            <strong id="resumoHorario">
+                                Selecione um horário
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DADOS DO CLIENTE -->
+
+            <div class="dados-cliente">
+
+                <div class="campo">
+
+                    <label for="nome">
+                        Seu nome
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite seu nome"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="whatsapp">
+                        Seu WhatsApp
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="whatsapp"
+                        placeholder="Digite seu número de WhatsApp"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BOTÃO AGENDAR -->
+
+            <div class="campo campo-botao">
+
+                <button
+                    type="button"
+                    id="btnAgendar"
+                    class="btnAgendar"
+                >
+
+                    Confirmar Agendamento
+
+                </button>
+
+            </div>
+
+
+            <p class="mensagem-seguranca">
+                Seus dados são utilizados somente para o agendamento.
+            </p>
+
+
+         </div>
+
+    </div>
 
 </div>
 
