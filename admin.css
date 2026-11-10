@@ -1156,8 +1156,18 @@ body {
     }
 
     .usuario-logado {
-        display: none;
-    }
+    display: block;
+
+    font-size: 10px;
+    text-align: right;
+
+    max-width: 105px;
+    line-height: 1.4;
+
+    flex-shrink: 0;
+
+    transform: translateY(25px);
+}
 
 
     /* MENU */
