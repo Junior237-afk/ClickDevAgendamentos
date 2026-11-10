@@ -1538,3 +1538,12 @@ footer p {
         padding: 12px;
     }
 }
+
+
+/* ESCONDER OS SELETORES ORIGINAIS */
+
+#servico,
+#data,
+#horario {
+    display: none !important;
+}
